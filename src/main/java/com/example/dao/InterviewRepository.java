@@ -1,5 +1,9 @@
 package com.example.dao;
 
-public interface InterviewRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.entities.Interview;
+
+public interface InterviewRepository extends JpaRepository<Interview, Long>{
 
 }
