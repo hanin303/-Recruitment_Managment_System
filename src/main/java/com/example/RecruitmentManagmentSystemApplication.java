@@ -8,9 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
+import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
+import com.example.dao.QuestionsRepository;
 import com.example.entities.Cv;
+import com.example.entities.Interview;
 import com.example.entities.OffreEmploi;
+import com.example.entities.Questions;
 
 @SpringBootApplication
 public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
@@ -19,6 +23,10 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private OffreEmploiRepository OffreRep;
 	@Autowired
 	private CVRepository CvRep;
+	@Autowired
+	  private InterviewRepository interviewRep;
+	@Autowired
+	  private QuestionsRepository questionsRep;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -39,6 +47,15 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Cv cv2 = new Cv(2,"cv2.pdf");
 		CvRep.save(cv1);
 		CvRep.save(cv2);
+		
+		//AjouterInterview 
+		Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"physicall","Bizerte"));
+		Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"virtual","Tunis"));
+		Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"physicall","Ariana"));
+		//AjouterQuestions
+		Questions questions1 = questionsRep.save(new Questions(1L, "Introduce yourself"));
+		Questions questions2 = questionsRep.save(new Questions(2L, "what are your skills?"));
+		Questions questions3 = questionsRep.save(new Questions(3L,  "How old are you?"));
 		
 	}
 
