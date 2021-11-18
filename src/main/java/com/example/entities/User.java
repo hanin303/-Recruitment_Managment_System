@@ -1,16 +1,20 @@
 package com.example.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.JoinTable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -31,6 +35,10 @@ public class User {
 	private String photo;
 	private String Competance;
 	
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Interview>interview;
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Questions>questions;
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
 	//@JsonBackReference
