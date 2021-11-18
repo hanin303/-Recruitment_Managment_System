@@ -5,12 +5,21 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table (name="QUESTIONS")
 public class Questions implements Serializable{
 	@Id @GeneratedValue
 	private Long id_Question;
 	private String Question;
+	
+	@ManyToOne
+	@JoinColumn(name="IdUser")
+	private User user ;
+	
 	public Questions(Long id_Question, String question) {
 		super();
 		this.id_Question = id_Question;

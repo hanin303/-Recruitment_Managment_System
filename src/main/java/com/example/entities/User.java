@@ -1,11 +1,16 @@
 package com.example.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -22,6 +27,12 @@ public class User {
 	private int tel;
 	private String photo;
 	private String Competance;
+	
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Interview>interview;
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Questions>questions;
+	
 	public User(Long idUser, String nom, String prenom, String email, String pwd, String adress, int cin,
 			Date dateEmbauche, int tel, String photo, String competance) {
 		super();
