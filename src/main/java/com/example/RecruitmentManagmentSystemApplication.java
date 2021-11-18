@@ -86,9 +86,16 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				//Ajouter 2 UserRole
 				UserRole uRole1=new UserRole(1l);
 				UserRole uRole2=new UserRole(2L);
+				UserRole uRole3=new UserRole(3L);
 				urRepository.save(uRole1);
 				urRepository.save(uRole2);
+				urRepository.save(uRole3);
 		
+				
+			
+				
+				u1.getRoles().add(role1);
+				userRepository.save(u1);
 		
 		
 	}

@@ -3,14 +3,21 @@ package com.example.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+
+import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.JoinTable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class User {
@@ -32,6 +39,10 @@ public class User {
 	private Set<Interview>interview;
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Questions>questions;
+	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
+    @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
+	@JsonBackReference
+	private Set<Role> roles = new HashSet<>();
 	
 	public User(Long idUser, String nom, String prenom, String email, String pwd, String adress, int cin,
 			Date dateEmbauche, int tel, String photo, String competance) {
@@ -118,6 +129,13 @@ public class User {
 	public void setCompetance(String competance) {
 		Competance = competance;
 	}
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
 	
 	
 }
