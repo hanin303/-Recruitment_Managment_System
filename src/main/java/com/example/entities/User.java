@@ -41,7 +41,7 @@ public class User {
 	private Set<Questions>questions;
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
-	@JsonBackReference
+	//@JsonBackReference
 	private Set<Role> roles = new HashSet<>();
 	
 	public User(Long idUser, String nom, String prenom, String email, String pwd, String adress, int cin,

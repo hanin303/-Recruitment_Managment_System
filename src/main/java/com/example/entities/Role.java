@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Role {
@@ -22,7 +23,7 @@ public class Role {
 	
 	
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY , mappedBy = "roles" )
-	@JsonBackReference
+	@JsonIgnore
     private Set<User> users = new HashSet<>();
 	
 	public Role() {
