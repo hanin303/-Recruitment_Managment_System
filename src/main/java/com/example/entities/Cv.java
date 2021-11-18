@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Cv implements Serializable{
@@ -14,6 +15,15 @@ public class Cv implements Serializable{
 	private long idCV;
 	private String pdf;
 	
+	
+	/*@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_User")
+    private User user;*/
+	
+	
+	@OneToOne(mappedBy = "pdfcv")
+    private User user;
+
 	
 	public Cv() {
 		super();

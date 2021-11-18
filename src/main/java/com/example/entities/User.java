@@ -1,10 +1,12 @@
 package com.example.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.JoinTable;
 
@@ -15,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -44,6 +47,21 @@ public class User {
 	//@JsonBackReference
 	private Set<Role> roles = new HashSet<>();
 	
+	@OneToMany(mappedBy="user",
+				cascade = CascadeType.ALL,
+				fetch=FetchType.LAZY)
+	private List<OffreEmploi> offre = new ArrayList<OffreEmploi>();
+	
+	
+	 @OneToOne(cascade = CascadeType.ALL)
+	 @JoinColumn(name = "cv_id")
+	 private Cv pdfcv;
+
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public User(Long idUser, String nom, String prenom, String email, String pwd, String adress, int cin,
 			Date dateEmbauche, int tel, String photo, String competance) {
 		super();
@@ -59,10 +77,7 @@ public class User {
 		this.photo = photo;
 		Competance = competance;
 	}
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	public Long getIdUser() {
 		return idUser;
 	}
