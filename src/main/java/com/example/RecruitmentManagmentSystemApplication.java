@@ -13,14 +13,12 @@ import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
-import com.example.dao.UserRoleRepository;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.OffreEmploi;
 import com.example.entities.Questions;
 import com.example.entities.Role;
 import com.example.entities.User;
-import com.example.entities.UserRole;
 
 @SpringBootApplication
 public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
@@ -37,8 +35,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
-	@Autowired
-	private UserRoleRepository urRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -82,12 +78,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				roleRepository.save(role1);
 				roleRepository.save(role2);
 				
-				
-				//Ajouter 2 UserRole
-				UserRole uRole1=new UserRole(1l);
-				UserRole uRole2=new UserRole(2L);
-				urRepository.save(uRole1);
-				urRepository.save(uRole2);
 		
 				
 			

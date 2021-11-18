@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
-import com.example.dao.UserRoleRepository;
 import com.example.entities.Role;
 import com.example.entities.User;
 
