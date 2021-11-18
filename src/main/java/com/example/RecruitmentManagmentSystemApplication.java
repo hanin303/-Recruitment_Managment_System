@@ -91,6 +91,11 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				urRepository.save(uRole2);
 				urRepository.save(uRole3);
 		
+				
+			
+				
+				u1.getRoles().add(role1);
+				userRepository.save(u1);
 		
 		
 	}
