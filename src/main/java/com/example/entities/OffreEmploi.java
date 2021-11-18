@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OffreEmploi implements Serializable{
@@ -17,6 +19,11 @@ public class OffreEmploi implements Serializable{
 	private String Description;
 	private int nbPost;
 	private Date date;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="idUser")
+	private User user;
 	
 	public OffreEmploi() {
 		super();
