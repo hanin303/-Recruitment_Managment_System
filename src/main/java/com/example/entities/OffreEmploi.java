@@ -2,12 +2,16 @@ package com.example.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class OffreEmploi implements Serializable{
@@ -20,10 +24,8 @@ public class OffreEmploi implements Serializable{
 	private int nbPost;
 	private Date date;
 	
-	
-	@ManyToOne
-	@JoinColumn(name="idUser")
-	private User user;
+	@OneToMany(mappedBy="offre",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Interview> interviews ;
 	
 	public OffreEmploi() {
 		super();
@@ -37,6 +39,14 @@ public class OffreEmploi implements Serializable{
 		Description = description;
 		this.nbPost = nbPost;
 		this.date = date;
+	}
+
+	public Set<Interview> getInterviews() {
+		return interviews;
+	}
+
+	public void setInterviews(Set<Interview> interviews) {
+		this.interviews = interviews;
 	}
 
 	public long getIdOffre() {
