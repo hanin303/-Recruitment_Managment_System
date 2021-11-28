@@ -40,17 +40,10 @@ public class User {
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private Set<Interview>interview;
-	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<Questions>questions;
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
 	//@JsonBackReference
 	private Set<Role> roles = new HashSet<>();
-	
-	@OneToMany(mappedBy="user",
-				cascade = CascadeType.ALL,
-				fetch=FetchType.LAZY)
-	private List<OffreEmploi> offre = new ArrayList<OffreEmploi>();
 	
 	
 	 @OneToOne(cascade = CascadeType.ALL)
@@ -151,6 +144,17 @@ public class User {
 		this.roles = roles;
 	}
 	
-	
+	public Set<Interview> getInterview() {
+		return interview;
+	}
+	public void setInterview(Set<Interview> interview) {
+		this.interview = interview;
+	}
+	public Cv getPdfcv() {
+		return pdfcv;
+	}
+	public void setPdfcv(Cv pdfcv) {
+		this.pdfcv = pdfcv;
+	}
 	
 }

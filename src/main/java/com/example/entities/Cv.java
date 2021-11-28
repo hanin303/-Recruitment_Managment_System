@@ -15,16 +15,24 @@ public class Cv implements Serializable{
 	private long idCV;
 	private String pdf;
 	
-	
 	/*@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_User")
     private User user;*/
-	
 	
 	@OneToOne(mappedBy = "pdfcv")
     private User user;
 
 	
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public Cv() {
 		super();
 	// TODO Auto-generated constructor stub

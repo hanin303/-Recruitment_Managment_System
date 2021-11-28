@@ -1,12 +1,16 @@
 package com.example.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,9 +20,8 @@ public class Questions implements Serializable{
 	private Long id_Question;
 	private String Question;
 	
-	@ManyToOne
-	@JoinColumn(name="IdUser")
-	private User user ;
+	@OneToMany(mappedBy="id_Questionnaire",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Questionnaire> questionnaires ;
 	
 	public Questions(Long id_Question, String question) {
 		super();
@@ -34,6 +37,12 @@ public class Questions implements Serializable{
 	}
 	public String getQuestion() {
 		return Question;
+	}
+	public Set<Questionnaire> getQuestionnaires() {
+		return questionnaires;
+	}
+	public void setQuestionnaires(Set<Questionnaire> questionnaires) {
+		this.questionnaires = questionnaires;
 	}
 	public void setQuestion(String question) {
 		Question = question;

@@ -3,11 +3,16 @@ package com.example.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,10 +23,19 @@ public class Interview implements Serializable {
 	private Date interviewDate;
 	private String interviewType;
 	private String location;
+	private int note;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="idOffre")
+	private OffreEmploi offre ;
+	
+	@OneToMany(mappedBy="interview",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set<Questionnaire> questionnaires ;
 	
 	@ManyToOne
 	@JoinColumn(name="IdUser")
-	private User user ;
+	private User user;
 	
 	public Interview () {}
 	
@@ -31,6 +45,7 @@ public class Interview implements Serializable {
 		this.interviewDate = interviewDate;
 		this.interviewType = interviewType;
 		this.location = location;
+		this.note = 0;
 	}
 	
 	
@@ -58,5 +73,38 @@ public class Interview implements Serializable {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+	public int getNote() {
+		return note;
+	}
+
+	public void setNote(int note) {
+		this.note = note;
+	}
+
+	public OffreEmploi getOffre() {
+		return offre;
+	}
+
+	public void setOffre(OffreEmploi offre) {
+		this.offre = offre;
+	}
+
+	public Set<Questionnaire> getQuestionnaires() {
+		return questionnaires;
+	}
+
+	public void setQuestionnaires(Set<Questionnaire> questionnaires) {
+		this.questionnaires = questionnaires;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 }
