@@ -1,39 +1,36 @@
 package com.example.entities;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.JoinTable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class User {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_user",discriminatorType=DiscriminatorType.STRING,length=15)
+public class User implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long idUser;
 	private String Nom;
 	private String Prenom;
 	private String Email;
-	private String Pwd;
 	private String Adress;
 	private int Cin;
-	private Date DateEmbauche;
 	private int tel;
 	private String photo;
 	private String Competance;
@@ -55,22 +52,24 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(Long idUser, String nom, String prenom, String email, String pwd, String adress, int cin,
-			Date dateEmbauche, int tel, String photo, String competance) {
+	
+	
+	public User(Long idUser, String nom, String prenom, String email, String adress, int cin,
+			 int tel, String photo, String competance,Cv pdfcv) {
 		super();
 		this.idUser = idUser;
-		Nom = nom;
-		Prenom = prenom;
-		Email = email;
-		Pwd = pwd;
-		Adress = adress;
-		Cin = cin;
-		DateEmbauche = dateEmbauche;
+		this.Nom = nom;
+		this.Prenom = prenom;
+		this.Email = email;
+		this.Adress = adress;
+		this.Cin = cin;
 		this.tel = tel;
 		this.photo = photo;
-		Competance = competance;
+		this.Competance = competance;
+		this.pdfcv = pdfcv;
 	}
-	
+
+
 	public Long getIdUser() {
 		return idUser;
 	}
@@ -95,12 +94,7 @@ public class User {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public String getPwd() {
-		return Pwd;
-	}
-	public void setPwd(String pwd) {
-		Pwd = pwd;
-	}
+
 	public String getAdress() {
 		return Adress;
 	}
@@ -113,12 +107,7 @@ public class User {
 	public void setCin(int cin) {
 		Cin = cin;
 	}
-	public Date getDateEmbauche() {
-		return DateEmbauche;
-	}
-	public void setDateEmbauche(Date dateEmbauche) {
-		DateEmbauche = dateEmbauche;
-	}
+	
 	public int getTel() {
 		return tel;
 	}

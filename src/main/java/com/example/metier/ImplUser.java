@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.CVRepository;
 import com.example.dao.UserRepository;
-import com.example.entities.Cv;
 import com.example.entities.User;
 
 @Service
@@ -50,28 +48,20 @@ public class ImplUser implements InterUserMetier {
 
 	@Override
 	public User EditUser(long id, User user) {
-User u = userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Cet utilisateur n'existe pas"));
-		u.setIdUser(user.getIdUser());
-		u.setNom(user.getNom());
-		u.setPrenom(user.getPrenom());
-		u.setAdress(user.getAdress());
-		u.setCin(user.getCin());
-		u.setEmail(user.getEmail());
-		u.setCompetance(user.getCompetance());
-		u.setPwd(user.getPwd());
-		u.setTel(user.getTel());
-		u.setDateEmbauche(user.getDateEmbauche());
-		u.setPhoto(user.getPhoto());
-    	
-		userRepository.save(u);
+		User u = userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Cet utilisateur n'existe pas"));
+		
+			u.setIdUser(user.getIdUser());
+			u.setNom(user.getNom());
+			u.setPrenom(user.getPrenom());
+			u.setAdress(user.getAdress());
+			u.setCin(user.getCin());
+			u.setEmail(user.getEmail());
+			u.setCompetance(user.getCompetance());
+			u.setTel(user.getTel());
+			u.setPhoto(user.getPhoto());
+			userRepository.save(u);
 			
 	  	return u;
-	}
-
-	@Override
-	public User getUserByCode(long idUser, User user) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	
