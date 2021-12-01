@@ -1,7 +1,6 @@
 package com.example.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -37,7 +36,9 @@ public class Interview implements Serializable {
 	@JoinColumn(name="IdUser")
 	private User user;
 	
-	public Interview () {}
+	public Interview () {
+		super();
+	}
 	
 	public Interview(Long id_Interview, Date interviewDate, String interviewType, String location) {
 		super();

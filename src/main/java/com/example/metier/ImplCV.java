@@ -55,10 +55,6 @@ public class ImplCV implements InterCVMetier{
 	  	return cv;
 	}
 
-	@Override
-	public Cv getCvByTitre(long id, Cv cv) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

@@ -11,6 +11,5 @@ public interface InterCVMetier {
 	public void deleteCv(long id);
 	public Cv AddCv(Cv cv);
 	public Cv EditCv(long id,Cv cv);
-	public Cv getCvByTitre(long id,Cv cv);
 	
 }

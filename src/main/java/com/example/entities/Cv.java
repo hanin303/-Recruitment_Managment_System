@@ -22,7 +22,19 @@ public class Cv implements Serializable{
 	@OneToOne(mappedBy = "pdfcv")
     private User user;
 
+	public Cv() {
+		super();
+	// TODO Auto-generated constructor stub
+	}
+
 	
+	public Cv(long idCV, String pdf) {
+		super();
+		this.idCV = idCV;
+		this.pdf = pdf;
+	}
+
+
 	public User getUser() {
 		return user;
 	}
@@ -33,17 +45,6 @@ public class Cv implements Serializable{
 	}
 
 
-	public Cv() {
-		super();
-	// TODO Auto-generated constructor stub
-	}
-
-
-	public Cv(long idCV, String pdf) {
-		super();
-		this.idCV = idCV;
-		this.pdf = pdf;
-	}
 
 
 	public long getIdCV() {
@@ -64,8 +65,5 @@ public class Cv implements Serializable{
 	public void setPdf(String pdf) {
 		this.pdf = pdf;
 	}
-	
-	
-	
 	
 }
