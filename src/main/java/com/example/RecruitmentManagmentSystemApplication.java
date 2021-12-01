@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.dao.CVRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
+import com.example.dao.QuestionnaireRepository;
 import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
@@ -19,6 +20,7 @@ import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
 import com.example.entities.OffreEmploi;
+import com.example.entities.Questionnaire;
 import com.example.entities.Questions;
 import com.example.entities.Recruteur;
 import com.example.entities.Role;
@@ -36,6 +38,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	@Autowired
 	  private QuestionsRepository questionsRep;
 	@Autowired
+	  private QuestionnaireRepository questionnaireRep;
+	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
@@ -47,8 +51,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-						
-
 
 		//Ajouter des offres
 		OffreEmploi Offre1 = new OffreEmploi(1,"Chef de bureau à Bizerte","Le chef de bureau répond aux objectifs commerciaux qui lui ont été attribués, avec l'aide de son équipe :\r\n" + 
@@ -122,6 +124,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		userRepository.save(u2);
 		u3.getRoles().add(role1);
 		userRepository.save(u3);
+
 		
 		
 	}
