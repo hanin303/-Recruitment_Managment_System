@@ -10,12 +10,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.dao.CVRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
+import com.example.dao.QuestionnaireRepository;
 import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.OffreEmploi;
+import com.example.entities.Questionnaire;
 import com.example.entities.Questions;
 import com.example.entities.Role;
 import com.example.entities.User;
@@ -31,6 +33,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	  private InterviewRepository interviewRep;
 	@Autowired
 	  private QuestionsRepository questionsRep;
+	@Autowired
+	  private QuestionnaireRepository questionnaireRep;
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -64,6 +68,11 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				Questions questions2 = questionsRep.save(new Questions(2L, "what are your skills?"));
 				Questions questions3 = questionsRep.save(new Questions(3L,  "How old are you?"));
 				
+				//AjouterQuestionnaire
+				Questionnaire questionnaire1 = questionnaireRep.save(new Questionnaire(1L, 1));
+				Questionnaire questionnaire2 = questionnaireRep.save(new Questionnaire(2L, 0));
+				Questionnaire questionnaire3 = questionnaireRep.save(new Questionnaire(3L, 1));
+				
 				//Ajouter 2 users
 				Date date1=new Date("12/12/2012");
 				User u1=new User(1L, "nour", "guerfali", "aaaa", "aaaa", "aaa", 1111111, date1, 12345678, "photo", "c1");
@@ -77,9 +86,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				Role role2=new Role(2L, "admin");
 				roleRepository.save(role1);
 				roleRepository.save(role2);
-				
-		
-				
 			
 				
 				u1.getRoles().add(role1);
