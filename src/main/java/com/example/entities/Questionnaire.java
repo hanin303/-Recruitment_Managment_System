@@ -65,6 +65,8 @@ public class Questionnaire implements Serializable{
 		public void setQuestion(Questions question) {
 			this.question = question;
 		}
+
+
 		
 		
 }
