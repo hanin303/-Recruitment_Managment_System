@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.dao.UserRepository;
+import com.example.entities.Condidats;
 import com.example.entities.Cv;
 import com.example.entities.User;
 import com.example.metier.InterUserMetier;
@@ -28,6 +29,7 @@ public class UserRestService {
 		return userMetier.getUser();
 	}
 	
+		
 	@RequestMapping(value="/user/{iduser}",method = RequestMethod.GET)
     public User getUser(@PathVariable long iduser) {
 		return userMetier.getOneUser(iduser);
@@ -45,11 +47,9 @@ public class UserRestService {
     	return userMetier.AddUser(user);
 	}
 	
-	
 	@RequestMapping(value="/user/{iduser}",method = RequestMethod.PUT)
 	public ResponseEntity<User> EditUser(@PathVariable long iduser, @RequestBody User user){
 		 return ResponseEntity.ok(userMetier.EditUser(iduser, user));
     }
-
 
 }

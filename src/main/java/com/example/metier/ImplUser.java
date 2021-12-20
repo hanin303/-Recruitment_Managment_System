@@ -1,13 +1,18 @@
 package com.example.metier;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.dao.UserRepository;
+import com.example.entities.Condidats;
 import com.example.entities.User;
 
 @Service
@@ -16,6 +21,20 @@ public class ImplUser implements InterUserMetier {
 	private UserRepository userRepository;
 
 	@Override
+	public List<User> getUser() {
+		List<User> user = new ArrayList<User>();
+		user = userRepository.findAll();
+		
+		for (int i = 0 ; i <user.size();i++) {
+			if (user.get(i) instanceof Condidats) {
+				user.remove(user.get(i));
+			}
+		}
+		 return user;
+	}
+	
+	
+	@Override
 	public User getOneUser(long iduser) {
 		Optional<User> user = userRepository.findById(iduser);
 		if (user.isPresent()) { 
@@ -23,11 +42,10 @@ public class ImplUser implements InterUserMetier {
 		}else throw new RuntimeException("Utilisateur introuvable !! ");
 	}
 
-	@Override
-	public List<User> getUser() {
-		return userRepository.findAll();
-	}
+	
 
+	
+	
 	@Override
 	public void deleteUser(long idUser) {
 		Optional<User> user = userRepository.findById(idUser);
