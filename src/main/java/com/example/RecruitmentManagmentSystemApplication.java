@@ -101,8 +101,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre6);
 
 		//Ajouter deux cv
-		Cv cv1 = new Cv(1,"cv1.pdf");
-		Cv cv2 = new Cv(2,"cv2.pdf");
+		Cv cv1 = new Cv("cv1.pdf");
+		Cv cv2 = new Cv("cv2.pdf");
 		CvRep.save(cv1);
 		CvRep.save(cv2);
 
@@ -117,13 +117,23 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
 		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
 		User u2=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
-		userRepository.save(u3);
+		
 		userRepository.save(u4);
 		userRepository.save(u2);
 		u3.getRoles().add(role1);
 		userRepository.save(u3);
 		
 		
+		//AjouterInterview 
+				Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual"));
+				Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall"));
+				Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual"));
+	
+	
+		//AjouterQuestions
+		Questions questions1 = questionsRep.save(new Questions(1L, "Introduce yourself"));
+		Questions questions2 = questionsRep.save(new Questions(2L, "what are your skills?"));
+		Questions questions3 = questionsRep.save(new Questions(3L,  "How old are you?"));
 	}
 
 }
