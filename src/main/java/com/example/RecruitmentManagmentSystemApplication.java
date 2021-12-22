@@ -128,15 +128,17 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		
 		
 		//AjouterInterview 
-				Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual"));
-				Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall"));
-				Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual"));
+				Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual","12:48"));
+				Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall","10:05"));
+				Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual","17:00"));
 	
 	
 		//AjouterQuestions
-		Questions questions1 = questionsRep.save(new Questions(1L, "Introduce yourself"));
-		Questions questions2 = questionsRep.save(new Questions(2L, "what are your skills?"));
-		Questions questions3 = questionsRep.save(new Questions(3L,  "How old are you?"));
+		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
+		Questions questions2 = questionsRep.save(new Questions(2L, "Why do you want to leave your current job?"));
+		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
+		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
+
 	}
 
 }

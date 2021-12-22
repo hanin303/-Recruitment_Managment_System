@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 @Entity
 @Table (name="INTERVIEW")
 public class Interview implements Serializable {
@@ -22,9 +24,10 @@ public class Interview implements Serializable {
 	private Date interviewDate;
 	private String interviewType;
 	private String location;
+	private String time;
 	private int note;
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idOffre")
 	private OffreEmploi offre ;
@@ -40,12 +43,13 @@ public class Interview implements Serializable {
 		super();
 	}
 	
-	public Interview(Long id_Interview, Date interviewDate, String interviewType, String location) {
+	public Interview(Long id_Interview, Date interviewDate, String interviewType, String location , String time) {
 		super();
 		this.id_Interview = id_Interview;
 		this.interviewDate = interviewDate;
 		this.interviewType = interviewType;
 		this.location = location;
+		this.time = time;
 		this.note = 0;
 	}
 	
@@ -61,6 +65,13 @@ public class Interview implements Serializable {
 	}
 	public void setInterviewDate(Date interviewDate) {
 		this.interviewDate = interviewDate;
+	}
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 	public String getInterviewType() {
 		return interviewType;
@@ -106,6 +117,8 @@ public class Interview implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 	
 	
 }
