@@ -40,6 +40,7 @@ public class InterviewMetierImpl  implements InterviewMetier {
 	public Interview AddInterview(Interview interviewAdd) {
 		Optional<Interview> interview = interviewRep.findById(interviewAdd.getId_Interview());
 		if (interview.isPresent() == false) { 
+			interviewAdd.setTest(0);
 			return interviewRep.save(interviewAdd);
 		}else throw new RuntimeException("you can't add a new interview");
 	}
@@ -51,6 +52,8 @@ public class InterviewMetierImpl  implements InterviewMetier {
 		interview.setId_Interview(interviewUpdate.getId_Interview());
 		interview.setInterviewDate(interviewUpdate.getInterviewDate());
 		interview.setInterviewType(interviewUpdate.getInterviewType());
+		interview.setTest(interviewUpdate.getTest());
+		interview.setTime(interviewUpdate.getTime());
 		interview.setLocation(interviewUpdate.getLocation());
     	
     	interviewRep.save(interview);

@@ -2,6 +2,8 @@ package com.example;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +27,7 @@ import com.example.entities.Questions;
 import com.example.entities.Recruteur;
 import com.example.entities.Role;
 import com.example.entities.User;
+import com.example.web.CondidatRestService;
 
 @SpringBootApplication
 public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
@@ -43,6 +46,9 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	CondidatRestService condRS;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -132,9 +138,9 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		
 		
 		//AjouterInterview 
-		Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual","12:48"));
-		Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall","10:05"));
-		Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual","17:00"));
+		Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual","12:48",0));
+		Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall","10:05",0));
+		Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0));
 
 	
 		//AjouterQuestions
@@ -143,6 +149,11 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
 		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
 
-	}
+		/*
+        Condidats u7=new Condidats(7L,"Thamlaoui", "Achref", "Achref@gmail.com", "Bizerte",114785236,52186359, "photoAchref", "c2",cv2);
+        condRS.AddCondidat(u7, Offre3.getIdOffre());
+        */
+		
+       	}
 
 }
