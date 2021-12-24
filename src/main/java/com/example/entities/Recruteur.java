@@ -43,6 +43,15 @@ public class Recruteur extends User{
 	public void setDateEmbauche(Date dateEmbauche) {
 		DateEmbauche = dateEmbauche;
 	}
+
+
+	@Override
+	public String toString() {
+		return super.toString()+"Recruteur [Pwd=" + Pwd + ", DateEmbauche=" + DateEmbauche + "]";
+	}
+
+
+	
 	
 	
 
