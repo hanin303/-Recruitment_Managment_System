@@ -45,9 +45,9 @@ public class CondidatRestService {
 			condMetier.deleteCondidat(iduser);
 	}
 	
-	@RequestMapping(value="/condidats",method = RequestMethod.POST)
-	public Condidats AddCondidat(@RequestBody Condidats user){
-		    return condMetier.AddCondidat(user);
+	@RequestMapping(value="/condidats/{idOffre}",method = RequestMethod.POST)
+	public void AddCondidat(@RequestBody Condidats user,@PathVariable long idOffre){
+		        condMetier.AddCondidat(user,idOffre);
 	}
 	
 

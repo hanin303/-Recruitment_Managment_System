@@ -24,6 +24,7 @@ public class Interview implements Serializable {
 	private String interviewType;
 	private String location;
 	private String time;
+	private int test;
 	private int note;
 	
 	@ManyToOne
@@ -41,17 +42,26 @@ public class Interview implements Serializable {
 		super();
 	}
 	
-	public Interview(Long id_Interview, Date interviewDate, String interviewType, String location , String time) {
+	public Interview(Long id_Interview, Date interviewDate, String interviewType, String location , String time,
+			int test) {
 		super();
 		this.id_Interview = id_Interview;
 		this.interviewDate = interviewDate;
 		this.interviewType = interviewType;
 		this.location = location;
 		this.time = time;
+		this.test=test;
 		this.note = 0;
 	}
 	
-	
+	public int getTest() {
+		return test;
+	}
+
+	public void setTest(int test) {
+		this.test = test;
+	}
+
 	public Long getId_Interview() {
 		return id_Interview;
 	}

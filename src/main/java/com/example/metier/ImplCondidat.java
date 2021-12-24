@@ -1,20 +1,33 @@
 package com.example.metier;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.CondidatRepository;
+import com.example.dao.InterviewRepository;
+import com.example.dao.OffreEmploiRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Condidats;
+import com.example.entities.Interview;
+import com.example.entities.OffreEmploi;
 import com.example.entities.User;
 
 @Service
 public class ImplCondidat implements InterCondidatMetier {
+
+	@Autowired
+	OffreEmploiRepository offerRep;
+	
+	@Autowired
+	InterviewRepository interviewRep;
+	
 	@Autowired
 	private CondidatRepository CondRep;
 
@@ -39,15 +52,38 @@ public class ImplCondidat implements InterCondidatMetier {
 			CondRep.delete(condidat);
 		}else throw new RuntimeException("Condidat introuvable !! ");	
 	}
-
+	
 	@Override
-	public Condidats AddCondidat(Condidats user) {
+	public void AddCondidat(Condidats user,long idOffre) {
 		Optional<Condidats> c =  CondRep.findById(user.getIdUser());
 		if (c.isPresent() == false) { 
-			return CondRep.save(user);
+		  	OffreEmploi offer = offerRep.findById(idOffre).get();
+		  	Interview interview = new Interview();
+			interview.setUser(user);
+			interview.setOffre(offer);
+			Set<Interview> ListInterv =new HashSet<Interview>() ;
+			ListInterv.add(interview);
+			user.setInterview(ListInterv);
+			CondRep.save(user);
+    	}else throw new RuntimeException("cet utilisateur déjà existe");
+	}
+	 
+	/*
+    @Override
+	public void AddCondidat(Condidats user) {
+		Optional<Condidats> c =  CondRep.findById(user.getIdUser());
+		if (c.isPresent() == false) { 
+	    	Interview interview = new Interview();
+			interview.setUser(user);
+			Set<Interview> ListInterv =new HashSet<Interview>() ;
+			ListInterv.add(interview);
+			user.setInterview(ListInterv);
+			CondRep.save(user);
 		}else throw new RuntimeException("cet utilisateur déjà existe");
 	}
-
+*/
+	
+	
 	@Override
 	public Condidats EditCondidat(long id, Condidats condidat) {
 		Condidats c = CondRep.findById(id).orElseThrow(()->new ResourceNotFoundException("Ce condidat n'existe pas"));
