@@ -118,20 +118,24 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Date date1=new Date("12/12/2012");
 		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
 		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
-		User u2=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
+		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
+		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia", "c2",cv2);
+		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem", "c2",cv2);
 		
 		userRepository.save(u4);
 		userRepository.save(u2);
 		u3.getRoles().add(role1);
 		userRepository.save(u3);
+		userRepository.save(u5);	
+		userRepository.save(u6);
 
 		
 		
 		//AjouterInterview 
-				Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual","12:48"));
-				Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall","10:05"));
-				Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual","17:00"));
-	
+		Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual","12:48"));
+		Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall","10:05"));
+		Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual","17:00"));
+
 	
 		//AjouterQuestions
 		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
