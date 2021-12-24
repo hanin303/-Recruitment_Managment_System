@@ -7,11 +7,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.example.dao.CondidatRepository;
 import com.example.dao.InterviewRepository;
+import com.example.entities.Condidats;
 import com.example.entities.Interview;
 
 @Service
 public class InterviewMetierImpl  implements InterviewMetier {
+	
+	@Autowired
+	private CondidatRepository condidatRep;
+	
 	@Autowired
 	private InterviewRepository interviewRep;
 	
@@ -32,7 +39,13 @@ public class InterviewMetierImpl  implements InterviewMetier {
 	public void deleteInterview(long id_Interview) {
 		Optional<Interview> interview = interviewRep.findById(id_Interview);
 		if (interview.isPresent()) { 
-			interviewRep.deleteById(id_Interview);
+		  Interview	interviewDeleted = interview.get();
+		  interviewDeleted.setOffre(null);
+		  Condidats condidat = condidatRep.findById(interviewDeleted.getUser().getIdUser()).get();
+		  interviewDeleted.setUser(null);
+		  condidatRep.deleteById(condidat.getIdUser());
+		  //interviewRep.deleteById(interviewDeleted.getId_Interview());
+		  interviewRep.deleteInterview(id_Interview);
 	    }else throw new RuntimeException("can't delete interview");
 	}
 
