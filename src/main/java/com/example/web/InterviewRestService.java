@@ -17,7 +17,7 @@ import com.example.entities.Interview;
 import com.example.metier.InterviewMetier;
 
 @RestController
-@CrossOrigin(origins="https://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 public class InterviewRestService {
 	@Autowired
 	private InterviewMetier interviewMetier;

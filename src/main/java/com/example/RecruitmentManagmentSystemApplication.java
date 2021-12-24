@@ -4,7 +4,11 @@ package com.example;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+
 import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +16,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
+//import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionnaireRepository;
@@ -20,6 +25,7 @@ import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Admin;
 import com.example.entities.Condidats;
+//import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
@@ -29,6 +35,7 @@ import com.example.entities.Questions;
 import com.example.entities.Recruteur;
 import com.example.entities.Role;
 import com.example.entities.User;
+import com.example.web.CondidatRestService;
 
 @SpringBootApplication
 public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
@@ -51,6 +58,12 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	@Autowired
 	private InterviewRepository interviewRepository;
 	
+	/*@Autowired
+	private ContactRepository contactRepository;*/
+	
+	@Autowired
+	CondidatRestService condRS;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -111,8 +124,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre6);
 
 		//Ajouter deux cv
-		Cv cv1 = new Cv(1,"cv1.pdf");
-		Cv cv2 = new Cv(2,"cv2.pdf");
+		Cv cv1 = new Cv("cv1.pdf");
+		Cv cv2 = new Cv("cv2.pdf");
 		CvRep.save(cv1);
 		CvRep.save(cv2);
 
@@ -129,6 +142,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		
 		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
 		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
+
 		User u6=new Recruteur(1L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date3);
 		User u7=new Recruteur(1L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date2);
 		User u2=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
@@ -138,10 +152,17 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		u5.setPrenom("ahmed");
 		u5.setNom("ben saber");
 		userRepository.save(u3);
+
+		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
+		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia", "c2",cv2);
+		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem", "c2",cv2);
+		
+
 		userRepository.save(u4);
 		userRepository.save(u2);
 		u3.getRoles().add(role1);
 		userRepository.save(u3);
+
 		userRepository.save(u5);
 		userRepository.save(u6);
 		userRepository.save(u7);
@@ -198,6 +219,29 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		}
 		*/
 		
+		userRepository.save(u5);	
+		userRepository.save(u6);
+
+		
+		
+		//AjouterInterview 
+		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
+		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
+		Interview interview3 = new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0);
+		
+		interviewRep.save(interview1);
+		interviewRep.save(interview2);
+		interviewRep.save(interview3);
+		
+		//AjouterQuestions
+		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
+		Questions questions2 = questionsRep.save(new Questions(2L, "Why do you want to leave your current job?"));
+		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
+		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
+
+		//contact 
+	//	Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
+
 	}
 	
 	

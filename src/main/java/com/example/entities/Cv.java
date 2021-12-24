@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cv implements Serializable{
 	
@@ -19,6 +21,7 @@ public class Cv implements Serializable{
     @JoinColumn(name = "id_User")
     private User user;*/
 	
+	@JsonIgnore
 	@OneToOne(mappedBy = "pdfcv")
     private User user;
 
@@ -28,9 +31,8 @@ public class Cv implements Serializable{
 	}
 
 	
-	public Cv(long idCV, String pdf) {
+	public Cv( String pdf) {
 		super();
-		this.idCV = idCV;
 		this.pdf = pdf;
 	}
 
