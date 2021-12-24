@@ -9,7 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
-import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionnaireRepository;
@@ -17,7 +16,6 @@ import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Condidats;
-import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
@@ -45,8 +43,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
-	@Autowired
-	private ContactRepository contactRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -132,19 +128,15 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		
 		
 		//AjouterInterview 
-				Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual","12:48"));
-				Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall","10:05"));
-				Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual","17:00"));
+				Interview interview1 = interviewRep.save(new Interview(1L, new Date(),"RH","virtual"));
+				Interview interview2 = interviewRep.save(new Interview(2L, new Date(),"technique","physicall"));
+				Interview interview3 = interviewRep.save(new Interview(3L,  new Date(),"téléphonique","virtual"));
 	
 	
 		//AjouterQuestions
-		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
-		Questions questions2 = questionsRep.save(new Questions(2L, "Why do you want to leave your current job?"));
-		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
-		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
-
-		Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
-		
+		Questions questions1 = questionsRep.save(new Questions(1L, "Introduce yourself"));
+		Questions questions2 = questionsRep.save(new Questions(2L, "what are your skills?"));
+		Questions questions3 = questionsRep.save(new Questions(3L,  "How old are you?"));
 	}
 
 }
