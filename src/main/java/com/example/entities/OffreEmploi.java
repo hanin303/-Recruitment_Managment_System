@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class OffreEmploi implements Serializable{
 	
@@ -24,7 +26,8 @@ public class OffreEmploi implements Serializable{
 	private int nbPost;
 	private Date date;
 	
-	@OneToMany(mappedBy="offre",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="offre",cascade = CascadeType.ALL,fetch=FetchType.EAGER)	
+	@JsonIgnore
 	private Set<Interview> interviews ;
 	
 	public OffreEmploi() {

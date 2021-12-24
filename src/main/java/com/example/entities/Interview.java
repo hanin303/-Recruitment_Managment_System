@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import net.minidev.json.annotate.JsonIgnore;
 
 @Entity
 @Table (name="INTERVIEW")
@@ -27,7 +26,6 @@ public class Interview implements Serializable {
 	private String time;
 	private int note;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idOffre")
 	private OffreEmploi offre ;

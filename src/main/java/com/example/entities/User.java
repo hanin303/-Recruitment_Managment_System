@@ -17,7 +17,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import net.minidev.json.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.ManyToMany;
 
@@ -39,12 +39,14 @@ public class User implements Serializable{
 	private String Competance;
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Set<Interview>interview;
+	
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
 	private Set<Role> roles = new HashSet<>();
 	
-	 @JsonIgnore
+	
 	 @OneToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "cv_id")
 	 private Cv pdfcv;
