@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
+import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionnaireRepository;
@@ -16,6 +17,7 @@ import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Condidats;
+import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
@@ -43,6 +45,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
+	@Autowired
+	private ContactRepository contactRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -139,6 +143,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
 		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
 
+		Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
+		
 	}
 
 }

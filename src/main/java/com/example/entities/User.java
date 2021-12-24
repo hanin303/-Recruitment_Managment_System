@@ -39,6 +39,7 @@ public class User implements Serializable{
 	private String Competance;
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Set<Interview>interview;
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
@@ -49,7 +50,6 @@ public class User implements Serializable{
 	 @JoinColumn(name = "cv_id")
 	 private Cv pdfcv;
 
-	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
