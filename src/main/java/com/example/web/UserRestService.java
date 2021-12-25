@@ -101,5 +101,14 @@ public class UserRestService {
 		return a;
 	}
 
+	
+	
+	@RequestMapping(value = "/getClassName/{iduser}", method = RequestMethod.GET)
+	 public String getClassName(@PathVariable long iduser) {
+		User u=userRepository.findById(iduser).get();
+		System.out.println("**********"+u.getNom());
+		return u.getClass().getSimpleName();
+	}
+	
 
 }

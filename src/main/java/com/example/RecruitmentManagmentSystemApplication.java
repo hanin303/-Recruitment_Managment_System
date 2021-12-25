@@ -143,15 +143,15 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
 		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
 
-		User u6=new Recruteur(1L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date3);
+		User u10=new Recruteur(1L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date3);
 		User u7=new Recruteur(1L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date2);
-		User u2=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
-		User u5=new Admin();
-		u5.setCin(12345678);
-		u5.setEmail("ahmed@gmail.com");
-		u5.setPrenom("ahmed");
-		u5.setNom("ben saber");
-		userRepository.save(u3);
+		User u8=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
+		User u9=new Admin();
+		u9.setCin(12345678);
+		u9.setEmail("ahmed@gmail.com");
+		u9.setPrenom("ahmed");
+		u9.setNom("ben saber");
+		userRepository.save(u9);
 
 		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
 		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia", "c2",cv2);
@@ -166,9 +166,14 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		userRepository.save(u5);
 		userRepository.save(u6);
 		userRepository.save(u7);
-
-
 		
+		userRepository.save(u8);
+		userRepository.save(u9);
+		userRepository.save(u10);
+
+
+System.out.println("classe name : "+u2.getClass().getSimpleName());
+
 		
 		Date date=new Date();
 		Interview i=new Interview();
