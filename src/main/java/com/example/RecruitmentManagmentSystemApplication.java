@@ -16,6 +16,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
+import com.example.dao.ContactRepository;
 //import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
@@ -25,6 +26,7 @@ import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Admin;
 import com.example.entities.Condidats;
+import com.example.entities.Contact;
 //import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
@@ -56,10 +58,10 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private RoleRepository roleRepository;
 	
 	@Autowired
+	private ContactRepository contactRepository;
+  @Autowired
 	private InterviewRepository interviewRepository;
-	
-	/*@Autowired
-	private ContactRepository contactRepository;*/
+
 	
 	@Autowired
 	CondidatRestService condRS;
@@ -245,7 +247,7 @@ System.out.println("classe name : "+u2.getClass().getSimpleName());
 		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
 
 		//contact 
-	//	Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
+	    Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
 
 	}
 	

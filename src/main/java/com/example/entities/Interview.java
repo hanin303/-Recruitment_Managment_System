@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,7 +37,7 @@ public class Interview implements Serializable {
 	private OffreEmploi offre ;
 	
 	@OneToMany(mappedBy="interview",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
-	
+	@JsonIgnore
 	private Set<Questionnaire> questionnaires ;
 	
 	@ManyToOne

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table (name="QUESTIONS")
 public class Questions implements Serializable{
@@ -19,6 +21,7 @@ public class Questions implements Serializable{
 	private String Question;
 	
 	@OneToMany(mappedBy="id_Questionnaire",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Set<Questionnaire> questionnaires ;
 	
 	public Questions(Long id_Question, String question) {
