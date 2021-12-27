@@ -22,6 +22,10 @@ public class InterviewRestService {
 	@Autowired
 	private InterviewMetier interviewMetier;
 
+	@Autowired
+	private InterviewRepository interviewRepository;
+
+	
 	@RequestMapping(value ="/Interview" , method = RequestMethod.GET)
 	public List<Interview> getInterview(){
 		return  interviewMetier.getInterview();
@@ -46,6 +50,8 @@ public class InterviewRestService {
 	public void deleteInterview (@PathVariable long id_Interview){
 		interviewMetier.deleteInterview(id_Interview);
 	}
+
+	
 
 
 }

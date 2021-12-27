@@ -1,7 +1,14 @@
 package com.example;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+
+import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
 import com.example.dao.CompetanceRepository;
-//import com.example.dao.ContactRepository;
+import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionnaireRepository;
@@ -18,8 +25,9 @@ import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Competance;
+import com.example.entities.Admin;
 import com.example.entities.Condidats;
-//import com.example.entities.Contact;
+import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
@@ -51,13 +59,16 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	@Autowired
 	private CompetanceRepository competanceRep;
 	
-	
-	
-	/*@Autowired
-	private ContactRepository contactRepository;*/
+	@Autowired
+	private ContactRepository contactRepository;
+   
+	@Autowired
+	private InterviewRepository interviewRepository;
+
 	
 	@Autowired
 	CondidatRestService condRS;
+
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
@@ -118,7 +129,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre6);
 
 		
-		//AjouterInterview 
+		//AjouterCompetance
 		Competance competance1 = new Competance(1L, "Angular", 20);
 		Competance competance2 = new Competance(2L, "Laravel", 100);
 		Competance competance3 = new Competance(3L, "Java", 50);
@@ -142,23 +153,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		roleRepository.save(role1);
 		roleRepository.save(role2);
 
-		//Ajouter 2 users
-		Date date1=new Date("12/12/2012");
-		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
-		User u4=new Recruteur(8L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
-		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
-		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
-		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
-		
-		userRepository.save(u4);
-		userRepository.save(u2);
-		u3.getRoles().add(role1);
-		userRepository.save(u3);
-		userRepository.save(u5);	
-		userRepository.save(u6);
-
-		
-		
 		//AjouterInterview 
 		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
 		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
@@ -175,7 +169,105 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
 
 		//contact 
-	//	Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
+	    Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
+
+		
+		//Ajouter 2 users
+		Date date1=new Date("12/12/2012");
+		Date date2=new Date("1/1/2015");
+		Date date3=new Date("10/1/2015");
+		
+		User u1=new Condidats(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
+		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
+		User u3=new Interviewer(3L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
+		User u4=new Recruteur(4L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
+		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
+		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
+		User u7=new Recruteur(7L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
+		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2",cv2,"G","F","I","L");
+		User u9=new Admin();
+		u9.setCin(12345678);
+		u9.setEmail("ahmed@gmail.com");
+		u9.setPrenom("ahmed");
+		u9.setNom("ben saber");
+		User u10=new Recruteur(10L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date3,"G","F","I","L");
+		
+		userRepository.save(u1);
+		userRepository.save(u2);		
+		userRepository.save(u3);
+		u3.getRoles().add(role1);
+		userRepository.save(u3);
+		userRepository.save(u4);
+		userRepository.save(u5);
+		userRepository.save(u6);
+		userRepository.save(u7);
+		userRepository.save(u8);
+		userRepository.save(u9);
+		userRepository.save(u10);
+
+
+        
+		System.out.println("classe name : "+u2.getClass().getSimpleName());
+
+		
+		Date date=new Date();
+		Interview i=new Interview();
+		i.setInterviewDate(date);
+		i.setLocation("ssssssss");
+		interviewRep.save(i);
+	
+		
+	/*	System.out.println("size $$$$$$$  Inter : "+interviewRepository.findAllInterviews().size());
+		
+		Collection<Interview> l1=interviewRepository.findAllInterviews();
+		Collection l = null;
+		int j;
+		l.addAll(l1);		
+
+		System.out.println("**** : "+l.toString());
+   */
+		List<String>s=userRepository.findAllUsers();
+		String annee1=s.get(0).charAt(0)+""+s.get(0).charAt(1)+""+s.get(0).charAt(2)+""+s.get(0).charAt(3);
+		String annee2=s.get(1).charAt(0)+""+s.get(1).charAt(1)+""+s.get(1).charAt(2)+""+s.get(1).charAt(3);
+		
+		System.out.println("**** : "+userRepository.findAllUsers().toString());
+		
+		System.out.println("**** : "+s.get(0).charAt(5));
+		System.out.println("**** : "+s.get(1).charAt(5));
+		System.out.println("annee : "+annee1.toString());
+		System.out.println("annee : "+annee2.toString());
+		System.out.println("**** : "+s.get(1));
+		System.out.println("**** : "+s.get(0));
+		
+		List<String> a =new ArrayList<String> ();
+		
+		for(int j=0;j<s.size();j++) {
+			String nb=s.get(j).charAt(5)+"";
+			String annee=s.get(j).charAt(0)+""+s.get(j).charAt(1)+""+s.get(j).charAt(2)+""+s.get(j).charAt(3);
+			
+			a.add(annee);
+			a.add(nb);
+			
+		}
+		
+		System.out.println("listaaaaaaa : "+a.get(0)+" "+a.get(1)+" "+a.get(2)+" "+a.get(3));
+		
+		//System.out.println("size"+s.size());
+		
+	/*	for(int j=0;j<userRepository.findAllUsers().size();j++) {
+			List<Recruteur> user1= userRepository.findAllUsers();
+			System.out.println("**** : "+user1.get(j).toString());
+		}
+		*/
+		
+		
+		
+		userRepository.save(u5);	
+		userRepository.save(u6);
+
+
 	}
+	
+	
 
 }

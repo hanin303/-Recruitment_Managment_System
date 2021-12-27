@@ -17,6 +17,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.ManyToMany;
@@ -52,11 +54,14 @@ public class User implements Serializable{
 	
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
+	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
-	
+
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cv_id")
 	private Cv pdfcv;
+
 
 	public User() {
 		super();
@@ -204,6 +209,14 @@ public class User implements Serializable{
 	}
 	public void setPdfcv(Cv pdfcv) {
 		this.pdfcv = pdfcv;
+	}
+
+
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Email=" + Email + ", Adress="
+				+ Adress + ", Cin=" + Cin + ", tel=" + tel + ", photo=" + photo +
+				 ", interview=" + interview + ", roles=" + roles + ", pdfcv=" + pdfcv + "]";
 	}
 	
 }
