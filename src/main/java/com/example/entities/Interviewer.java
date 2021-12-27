@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value="interviewer")
 public class Interviewer extends User{
+	
 	private String Pwd;
 	private Date DateEmbauche;
 	
@@ -19,15 +20,15 @@ public class Interviewer extends User{
 
 
 	public Interviewer(Long idUser, String nom, String prenom, String email, String adress, int cin, int tel,
-			String photo, String competance, Cv pdfcv) {
-		super(idUser, nom, prenom, email, adress, cin, tel, photo, competance, pdfcv);
+			String photo, Cv pdfcv,String LienG,String LienF,String LienI,String LienL) {
+		super(idUser,nom,prenom,email,adress,cin,tel,photo,pdfcv,LienG,LienF,LienI,LienL);
 		// TODO Auto-generated constructor stub
 	}
 
 
 	public Interviewer(Long idUser, String nom, String prenom, String email, String adress, int cin,
-			 int tel, String photo, String competance,Cv pdfcv,String pwd, Date dateEmbauche) {
-		super(idUser,nom,prenom,email,adress,cin,tel,photo, competance,pdfcv);
+			 int tel, String photo,Cv pdfcv,String pwd, Date dateEmbauche,String LienG,String LienF,String LienI,String LienL) {
+		super(idUser,nom,prenom,email,adress,cin,tel,photo,pdfcv,LienG,LienF,LienI,LienL);
 		Pwd = pwd;
 		DateEmbauche = dateEmbauche;
 	}

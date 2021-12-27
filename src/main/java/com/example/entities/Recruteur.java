@@ -18,8 +18,8 @@ public class Recruteur extends User{
 
 
 	public Recruteur(Long idUser, String nom, String prenom, String email, String adress, int cin,
-			 int tel, String photo, String competance,Cv pdfcv,String pwd, Date dateEmbauche) {
-		super(idUser,nom,prenom,email,adress,cin,tel,photo, competance,pdfcv);
+			 int tel, String photo,Cv pdfcv,String pwd, Date dateEmbauche,String LienG,String LienF,String LienI,String LienL) {
+		super(idUser,nom,prenom,email,adress,cin,tel,photo,pdfcv,LienG,LienF,LienI,LienL);
 		Pwd = pwd;
 		DateEmbauche = dateEmbauche;
 	}

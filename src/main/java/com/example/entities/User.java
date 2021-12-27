@@ -26,6 +26,7 @@ import javax.persistence.ManyToMany;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_user",discriminatorType=DiscriminatorType.STRING,length=15)
 public class User implements Serializable{
+
 	@Id
 	@GeneratedValue
 	private Long idUser;
@@ -36,22 +37,27 @@ public class User implements Serializable{
 	private int Cin;
 	private int tel;
 	private String photo;
-	private String Competance;
+	private String LienGithub;
+	private String LienFacebook;
+	private String LienLinkedIn;
+	private String LienInstagram;
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JsonIgnore
 	private Set<Interview>interview;
 	
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonIgnore
+	private Set<Competance> competances ;
+	
 	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
 	private Set<Role> roles = new HashSet<>();
 	
-	
-	 @OneToOne(cascade = CascadeType.ALL)
-	 @JoinColumn(name = "cv_id")
-	 private Cv pdfcv;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cv_id")
+	private Cv pdfcv;
 
-	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -59,7 +65,7 @@ public class User implements Serializable{
 	
 	
 	public User(Long idUser, String nom, String prenom, String email, String adress, int cin,
-			 int tel, String photo, String competance,Cv pdfcv) {
+			 int tel, String photo,Cv pdfcv,String LienG,String LienF,String LienI,String LienL) {
 		super();
 		this.idUser = idUser;
 		this.Nom = nom;
@@ -69,14 +75,69 @@ public class User implements Serializable{
 		this.Cin = cin;
 		this.tel = tel;
 		this.photo = photo;
-		this.Competance = competance;
 		this.pdfcv = pdfcv;
+		this.LienFacebook=LienF;
+		this.LienGithub=LienG;
+		this.LienInstagram=LienI;
+		this.LienLinkedIn=LienL;
+	}
+	
+
+	
+
+
+	public String getLienGithub() {
+		return LienGithub;
 	}
 
+
+	public void setLienGithub(String lienGithub) {
+		LienGithub = lienGithub;
+	}
+
+
+	public String getLienFacebook() {
+		return LienFacebook;
+	}
+
+
+	public void setLienFacebook(String lienFacebook) {
+		LienFacebook = lienFacebook;
+	}
+
+
+	public String getLienLinkedIn() {
+		return LienLinkedIn;
+	}
+
+
+	public void setLienLinkedIn(String lienLinkedIn) {
+		LienLinkedIn = lienLinkedIn;
+	}
+
+
+	public String getLienInstagram() {
+		return LienInstagram;
+	}
+
+
+	public void setLienInstagram(String lienInstagram) {
+		LienInstagram = lienInstagram;
+	}
+
+
+	public Set<Competance> getCompetances() {
+		return competances;
+	}
+
+	public void setCompetances(Set<Competance> competances) {
+		this.competances = competances;
+	}
 
 	public Long getIdUser() {
 		return idUser;
 	}
+	
 	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
@@ -124,12 +185,7 @@ public class User implements Serializable{
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	public String getCompetance() {
-		return Competance;
-	}
-	public void setCompetance(String competance) {
-		Competance = competance;
-	}
+
 	public Set<Role> getRoles() {
 		return roles;
 	}

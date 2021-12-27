@@ -68,36 +68,18 @@ public class ImplCondidat implements InterCondidatMetier {
     	}else throw new RuntimeException("cet utilisateur déjà existe");
 	}
 	 
-	/*
-    @Override
-	public void AddCondidat(Condidats user) {
-		Optional<Condidats> c =  CondRep.findById(user.getIdUser());
-		if (c.isPresent() == false) { 
-	    	Interview interview = new Interview();
-			interview.setUser(user);
-			Set<Interview> ListInterv =new HashSet<Interview>() ;
-			ListInterv.add(interview);
-			user.setInterview(ListInterv);
-			CondRep.save(user);
-		}else throw new RuntimeException("cet utilisateur déjà existe");
-	}
-*/
-	
 	
 	@Override
 	public Condidats EditCondidat(long id, Condidats condidat) {
 		Condidats c = CondRep.findById(id).orElseThrow(()->new ResourceNotFoundException("Ce condidat n'existe pas"));
-		
 		c.setIdUser(condidat.getIdUser());
 		c.setNom(condidat.getNom());
 		c.setPrenom(condidat.getPrenom());
 		c.setAdress(condidat.getAdress());
 		c.setCin(condidat.getCin());
 		c.setEmail(condidat.getEmail());
-		c.setCompetance(condidat.getCompetance());
 		c.setTel(condidat.getTel());
 		 CondRep.save(c);
-		
 		 return c;
 	}
 

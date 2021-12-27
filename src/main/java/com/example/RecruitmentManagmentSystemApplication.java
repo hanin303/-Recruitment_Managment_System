@@ -2,8 +2,6 @@ package com.example;
 
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
+import com.example.dao.CompetanceRepository;
 //import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
@@ -18,13 +17,13 @@ import com.example.dao.QuestionnaireRepository;
 import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
+import com.example.entities.Competance;
 import com.example.entities.Condidats;
 //import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
 import com.example.entities.OffreEmploi;
-import com.example.entities.Questionnaire;
 import com.example.entities.Questions;
 import com.example.entities.Recruteur;
 import com.example.entities.Role;
@@ -48,6 +47,11 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	private CompetanceRepository competanceRep;
+	
+	
 	
 	/*@Autowired
 	private ContactRepository contactRepository;*/
@@ -113,6 +117,19 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre5);
 		OffreRep.save(Offre6);
 
+		
+		//AjouterInterview 
+		Competance competance1 = new Competance(1L, "Angular", 20);
+		Competance competance2 = new Competance(2L, "Laravel", 100);
+		Competance competance3 = new Competance(3L, "Java", 50);
+		Competance competance4 = new Competance(4L, "Spring Boot", 70);
+
+		competanceRep.save(competance1);
+		competanceRep.save(competance2);
+		competanceRep.save(competance3);
+		competanceRep.save(competance4);
+				
+		
 		//Ajouter deux cv
 		Cv cv1 = new Cv("cv1.pdf");
 		Cv cv2 = new Cv("cv2.pdf");
@@ -127,11 +144,11 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 
 		//Ajouter 2 users
 		Date date1=new Date("12/12/2012");
-		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
-		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
-		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
-		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia", "c2",cv2);
-		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem", "c2",cv2);
+		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
+		User u4=new Recruteur(8L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
+		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
+		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
+		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
 		
 		userRepository.save(u4);
 		userRepository.save(u2);

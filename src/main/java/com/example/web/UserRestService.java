@@ -52,4 +52,5 @@ public class UserRestService {
 		 return ResponseEntity.ok(userMetier.EditUser(iduser, user));
     }
 
+	
 }
