@@ -17,6 +17,9 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 @Table (name="INTERVIEW")
 public class Interview implements Serializable {
@@ -39,6 +42,7 @@ public class Interview implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="IdUser")
+
 	private User user;
 	
 	public Interview () {
