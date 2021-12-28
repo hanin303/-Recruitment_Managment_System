@@ -22,7 +22,6 @@ public class ContactRestService {
 	private InterContactMetier contactMetier;
 
 	@RequestMapping(value="/contact",method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<Contact> getContact(){
 		return contactMetier.getContact();
 	}

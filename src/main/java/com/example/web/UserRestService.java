@@ -60,7 +60,6 @@ public class UserRestService {
 	}
 	
 	@RequestMapping(value="/user/{iduser}",method = RequestMethod.PUT)
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('INTERVIEWER')or hasAuthority('RECRUTEUR')")
 	public ResponseEntity<User> EditUser(@PathVariable long iduser, @RequestBody User user){
 		 return ResponseEntity.ok(userMetier.EditUser(iduser, user));
     }

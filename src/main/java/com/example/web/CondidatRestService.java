@@ -28,7 +28,6 @@ public class CondidatRestService {
 	CVRepository cvRep;
 	
 	@RequestMapping(value="/condidats",method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('RECRUTEUR') or hasAuthority('INTERVIEWER') ")
 	public List<Condidats> getCondidats(){
 		return condMetier.getCondidat();
 	}
@@ -50,7 +49,6 @@ public class CondidatRestService {
 	}
 	
 	@RequestMapping(value="/condidats/{idOffre}",method = RequestMethod.POST)
-	@PreAuthorize("hasAuthority('CONDIDAT')")
 	public void AddCondidat(@RequestBody Condidats user,@PathVariable long idOffre){
 		        condMetier.AddCondidat(user,idOffre);
 	}
