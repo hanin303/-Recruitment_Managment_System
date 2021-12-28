@@ -17,7 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.dao.CVRepository;
-//import com.example.dao.ContactRepository;
+import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionnaireRepository;
@@ -26,7 +26,7 @@ import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Admin;
 import com.example.entities.Condidats;
-//import com.example.entities.Contact;
+import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Employee;
 import com.example.entities.Interview;
