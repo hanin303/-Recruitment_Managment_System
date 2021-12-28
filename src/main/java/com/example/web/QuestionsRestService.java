@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,26 +23,31 @@ public class QuestionsRestService {
 	private QuestionsMetier questionsMetier;
 
 	@RequestMapping(value ="/Questions" , method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('INTERVIEWER')")
 	public List<Questions> getQuestions(){
 		return  questionsMetier.getQuestions();
 	}
 
 	@RequestMapping(value ="/Questions/{id}" , method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('INTERVIEWER')")
 	public Questions getQuestions(@PathVariable(value="id") Long id_Question) {
 		return  questionsMetier.getOneQuestion(id_Question);
 	}
 
 	@RequestMapping(value ="/Questions" , method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('INTERVIEWER')")
 	public Questions AddQuestions(@RequestBody Questions questionsAdd) {
 		return questionsMetier.AddQuestions(questionsAdd);
 	}
 
 	@RequestMapping(value ="/Questions/{id}" , method = RequestMethod.PUT)
+	@PreAuthorize(" hasAuthority('INTERVIEWER')")
 	public ResponseEntity<Questions> EditQuestions(@PathVariable(value="id") long id_Question ,@RequestBody Questions questionsUpdate ){
 		return ResponseEntity.ok(questionsMetier.EditQuestions(id_Question, questionsUpdate));
 	}
 	@RequestMapping(value ="/Questions/{id}" , method = RequestMethod.DELETE)
 	@ResponseBody
+	@PreAuthorize("hasAuthority('INTERVIEWER')")
 	public void deleteQuestions (@PathVariable(value="id") long id_Question){
 		questionsMetier.deleteQuestions(id_Question);
 	}
