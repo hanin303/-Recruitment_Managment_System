@@ -55,8 +55,18 @@ public class ImplCondidat implements InterCondidatMetier {
 	
 	@Override
 	public void AddCondidat(Condidats user,long idOffre) {
-		Optional<Condidats> c =  CondRep.findById(user.getIdUser());
-		if (c.isPresent() == false) { 
+		List<Condidats> CondidatList = this.getCondidat();	
+		Condidats CondAj = new Condidats();
+		boolean Test = false;
+		for(int i = 0 ;i<CondidatList.size();i++) {
+			if(CondidatList.get(i).getCin() == user.getCin()) {
+				Test = true;
+				CondAj =CondidatList.get(i); 
+			}else {
+				Test = false;
+			}
+		}
+		if (Test == false) { 
 		  	OffreEmploi offer = offerRep.findById(idOffre).get();
 		  	Interview interview = new Interview();
 			interview.setUser(user);
@@ -65,7 +75,18 @@ public class ImplCondidat implements InterCondidatMetier {
 			ListInterv.add(interview);
 			user.setInterview(ListInterv);
 			CondRep.save(user);
-    	}else throw new RuntimeException("cet utilisateur déjà existe");
+    	}else {
+    		OffreEmploi offer = offerRep.findById(idOffre).get();
+		  	Interview interview = new Interview();
+			interview.setUser(CondAj);
+			interview.setOffre(offer);
+			Set<Interview> ListInterv =new HashSet<Interview>() ;
+			ListInterv.add(interview);
+			CondAj.setInterview(ListInterv);
+			CondRep.save(CondAj);
+    		
+    	}
+	
 	}
 	 
 	
