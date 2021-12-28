@@ -1,0 +1,36 @@
+%%file NbAmis.py
+from mrjob.step import MRStep
+from mrjob.job import MRJob
+class NbAmis(MRJob):
+    def steps(self):
+        return [MRStep(mapper=self.mapper_get_words, reducer=self.reducer_count_words), \
+                MRStep (reducer=self.reducer1)]
+    def mapper_get_words(self, k, line):
+        id=line.split(":")
+        idAmi=id[1].split(",")
+        yield id[0] ,idAmi
+    def reducer_count_words(self, k, v):
+        liste=[]
+        for w in v :
+            for i in range(len(w)):
+                if w[i] < k :
+                    liste.append(w[i])
+                    liste.append(k)
+                elif w[i] > k:
+                    liste.append(k)
+                    liste.append(w[i])
+            yield k ,liste          
+    def reducer1 (self, key , values):
+        liste1=[]
+        for i in values:
+            liste1.append(i[0])
+            liste1.append(i[1])
+            yield key,liste1
+            liste1.clear()
+            
+               
+                
+                
+          
+if __name__ == '__main__':
+    NbAmis.run()

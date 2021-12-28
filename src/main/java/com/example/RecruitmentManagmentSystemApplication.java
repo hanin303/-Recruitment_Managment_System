@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.dao.CVRepository;
 //import com.example.dao.ContactRepository;
@@ -27,6 +28,7 @@ import com.example.entities.Admin;
 import com.example.entities.Condidats;
 //import com.example.entities.Contact;
 import com.example.entities.Cv;
+import com.example.entities.Employee;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
 import com.example.entities.OffreEmploi;
@@ -35,7 +37,9 @@ import com.example.entities.Questions;
 import com.example.entities.Recruteur;
 import com.example.entities.Role;
 import com.example.entities.User;
+import com.example.service.UserService;
 import com.example.web.CondidatRestService;
+
 
 @SpringBootApplication
 public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
@@ -54,7 +58,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
-	
+	@Autowired 
+	private UserService userService;
 	@Autowired
 	private InterviewRepository interviewRepository;
 	
@@ -69,6 +74,9 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		SpringApplication.run(RecruitmentManagmentSystemApplication.class, args);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.boot.CommandLineRunner#run(java.lang.String[])
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
@@ -129,48 +137,121 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		CvRep.save(cv1);
 		CvRep.save(cv2);
 
-		//Ajouter 2 roles
-		Role role1=new Role(1L, "user");
-		Role role2=new Role(2L, "admin");
-		roleRepository.save(role1);
-		roleRepository.save(role2);
 
+		
 		//Ajouter 2 users
 		Date date1=new Date("12/12/2012");
 		Date date2=new Date("1/1/2015");
 		Date date3=new Date("10/1/2015");
 		
-		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
-		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
+		
+		
+		//Ajouter 2 roles
+		Role role1=new Role(1L, "USER");
+		Role role2=new Role(2L, "ADMIN");
+		Role role3=new Role(1L, "EMPLOYEE");
+		Role role4=new Role(1L, "INTERVIEWER");
+		Role role5=new Role(1L, "RECRUTEUR");
+		Role role6=new Role(1L, "CONDIDAT");
+		
+		
+		roleRepository.save(role1);
+		roleRepository.save(role2);
+		roleRepository.save(role3);
+		roleRepository.save(role4);
+		roleRepository.save(role5);
+		roleRepository.save(role6);
+		
+		
+		
+		BCryptPasswordEncoder encoder; 
+		encoder = new BCryptPasswordEncoder();
+		/*User user=new User();
+		user.setUsername("user");
+		user.setIdUser(1L);
+		encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode("user"));
+		user.getRoles().add(role1);
+		userRepository.save(user);
+		roleRepository.save(role1);*/
+		
+		
 
-		User u10=new Recruteur(1L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date3);
-		User u7=new Recruteur(1L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date2);
-		User u8=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
-		User u9=new Admin();
+		
+		
+		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
+		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 12121212,53205145, "photoSamia", "c2",cv2);
+		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",11478523,52186359, "photoIlhem", "c2",cv2);
+		User u3=new Interviewer(1L,"nour", "guerfali", "nour@gmail.com", "bizerte", 13131313, 12345678, "photo", "c1",cv1,date1);
+		User u4=new Recruteur(1L,"Hanin", "benJemaa", "hanin@gmail.com", "Bizerte", 14141414, 12345678, "photo", "c1",cv1,date1);
+		User u10=new Recruteur(1L,"asma", "bbbbbb", "asma@gmail.com", "Tunis", 15151515, 12345678, "photo", "c1",cv1,date3);
+		User u7=new Recruteur(1L,"Hend", "hend", "hend@gmail.com", "Tunis", 1111111, 12345678, "photo", "c1",cv1,date2);
+		User u8=new Condidats(2L,"ilhem", "ben salhha", "ilhem@gmail.com", "Tunis", 19191919,  94945857, "photo2", "c2",cv2);
+		
+		
+		
+		Admin u9=new Admin();
+		u9.setIdUser(1L);
+		u9.setPdfcv(cv1);
 		u9.setCin(12345678);
+		u9.setAdress("Tunis");
+		u9.setCin(11221122);
+		u9.setTel(54515253);
+		u9.setCompetance("c2");
+		u9.setDateEmbauche(date3);
 		u9.setEmail("ahmed@gmail.com");
 		u9.setPrenom("ahmed");
 		u9.setNom("ben saber");
-		userRepository.save(u9);
+		u9.setUsername("ahmed");
+		u9.setIsAdmin(1);
+		encoder = new BCryptPasswordEncoder();
+		u9.setPassword(encoder.encode("ahmed"));
+		u9.getRoles().add(role1);
+		u9.getRoles().add(role2);
+		
+		u3.setUsername("nour");
+		encoder = new BCryptPasswordEncoder();
+		u3.setPassword(encoder.encode("nour"));
+		u3.getRoles().add(role1);
+		u3.getRoles().add(role4);
 
-		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
-		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia", "c2",cv2);
-		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem", "c2",cv2);
+		
+		u4.setUsername("hanin");
+		encoder = new BCryptPasswordEncoder();
+		u4.setPassword(encoder.encode("hanin"));
+		u4.getRoles().add(role1);
+		u4.getRoles().add(role5);
+		
+		
+		u10.setUsername("asma");
+		encoder = new BCryptPasswordEncoder();
+		u10.setPassword(encoder.encode("asma"));
+		u10.getRoles().add(role1);
+		u10.getRoles().add(role5);
+	
+		
+		
+		u7.setUsername("hend");
+		encoder = new BCryptPasswordEncoder();
+		u7.setPassword(encoder.encode("hend"));
+		u7.getRoles().add(role1);
+		u7.getRoles().add(role5);
+		
 		
 
+		User u11=userService.saveUser("user", "user", "user");
+		
 		userRepository.save(u4);
 		userRepository.save(u2);
 		u3.getRoles().add(role1);
 		userRepository.save(u3);
-
 		userRepository.save(u5);
 		userRepository.save(u6);
 		userRepository.save(u7);
-		
 		userRepository.save(u8);
 		userRepository.save(u9);
 		userRepository.save(u10);
-
+		userRepository.save(u11);
 
 System.out.println("classe name : "+u2.getClass().getSimpleName());
 
@@ -224,8 +305,6 @@ System.out.println("classe name : "+u2.getClass().getSimpleName());
 		}
 		*/
 		
-		userRepository.save(u5);	
-		userRepository.save(u6);
 
 		
 		

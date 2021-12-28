@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,21 +28,25 @@ public class InterviewRestService {
 
 	
 	@RequestMapping(value ="/Interview" , method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('RECRUTEUR') or hasAuthority('INTERVIEWER')")
 	public List<Interview> getInterview(){
 		return  interviewMetier.getInterview();
 	}
 
 	@RequestMapping(value ="/Interview/{id}" , method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('RECRUTEUR') or hasAuthority('INTERVIEWER') or hasAuthority('CONDIDAT') ")
 	public Interview getInterview(@PathVariable(value="id") Long id_Interview) {
 		return  interviewMetier.getOneInterview(id_Interview);
 	}
 
 	@RequestMapping(value ="/Interview" , method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('INTERVIEWER')")
 	public Interview AddInterview(@RequestBody Interview interviewAdd) {
 		return interviewMetier.AddInterview(interviewAdd);
 	}
 
 	@RequestMapping(value ="/Interview/{id_Interview}" , method = RequestMethod.PUT)
+	@PreAuthorize("hasAuthority('INTERVIEWER')")
 	public ResponseEntity<Interview> EditInterview(@PathVariable long id_Interview ,@RequestBody Interview interviewUpdate ){
 		return ResponseEntity.ok(interviewMetier.EditInterview(id_Interview,interviewUpdate));
 	}

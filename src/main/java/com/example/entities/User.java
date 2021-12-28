@@ -1,6 +1,9 @@
 package com.example.entities;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.JoinTable;
 
@@ -17,6 +20,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +33,7 @@ import javax.persistence.ManyToMany;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_user",discriminatorType=DiscriminatorType.STRING,length=15)
-public class User implements Serializable{
+public class User implements Serializable , UserDetails{
 	@Id
 	@GeneratedValue
 	private Long idUser;
@@ -39,12 +45,18 @@ public class User implements Serializable{
 	private int tel;
 	private String photo;
 	private String Competance;
+	private int isAdmin;
+	
+	private String username;
+	private String password;
+	private Boolean enabled;
+
 	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JsonIgnore
 	private Set<Interview>interview;
 	
-	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
 	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
@@ -75,6 +87,18 @@ public class User implements Serializable{
 		this.photo = photo;
 		this.Competance = competance;
 		this.pdfcv = pdfcv;
+		isAdmin=0;
+	}
+
+
+	
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 
@@ -154,6 +178,68 @@ public class User implements Serializable{
 		this.pdfcv = pdfcv;
 	}
 
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+	return false;
+	}
+	
+	@Override
+	public boolean isAccountNonLocked() {
+	return false;
+	}
+	
+	@Override
+	public boolean isCredentialsNonExpired() {
+	return false;
+	}
+	
+	@Override
+	public boolean isEnabled() {
+	return false;
+	}
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Set<Role> roles = this.getRoles();           
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		            
+		            for (Role role : roles) {
+		                authorities.add(new SimpleGrantedAuthority(role.getName()));
+		            }
+		            
+		            return authorities;
+	}
+	
 
 	@Override
 	public String toString() {

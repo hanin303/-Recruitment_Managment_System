@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,7 @@ public class OffreEmploiRestService {
 	
 	
 	@RequestMapping(value="/offers",method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('RECRUTEUR')")
 	public OffreEmploi AddOffre(@RequestBody OffreEmploi addOffre){
 	       return OffreMetier.AddOffre(addOffre);
 	}
@@ -41,6 +43,7 @@ public class OffreEmploiRestService {
 	
 	
 	@RequestMapping(value="/offers/{code}",method = RequestMethod.DELETE)
+	@PreAuthorize("hasAuthority('RECRUTEUR') ")
 	@ResponseBody
     public void delete(@PathVariable long code){
 		OffreMetier.deleteOffre(code);
@@ -48,6 +51,7 @@ public class OffreEmploiRestService {
 	
 	
 	@RequestMapping(value="/offers/{code}",method = RequestMethod.PUT)
+	@PreAuthorize("hasAuthority('RECRUTEUR')")
 	public ResponseEntity<OffreEmploi> updateOffre(@PathVariable long code,@RequestBody OffreEmploi o){
 	   return ResponseEntity.ok(OffreMetier.EditOffre(code, o));
 	}

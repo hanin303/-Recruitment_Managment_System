@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue(value="recruteur")
 public class Recruteur extends User{
-	private String Pwd;
 	private Date DateEmbauche;
 	
 	
@@ -18,20 +17,10 @@ public class Recruteur extends User{
 
 
 	public Recruteur(Long idUser, String nom, String prenom, String email, String adress, int cin,
-			 int tel, String photo, String competance,Cv pdfcv,String pwd, Date dateEmbauche) {
+			 int tel, String photo, String competance,Cv pdfcv, Date dateEmbauche) {
 		super(idUser,nom,prenom,email,adress,cin,tel,photo, competance,pdfcv);
-		Pwd = pwd;
+		
 		DateEmbauche = dateEmbauche;
-	}
-
-
-	public String getPwd() {
-		return Pwd;
-	}
-
-
-	public void setPwd(String pwd) {
-		Pwd = pwd;
 	}
 
 
@@ -47,13 +36,9 @@ public class Recruteur extends User{
 
 	@Override
 	public String toString() {
-		return super.toString()+"Recruteur [Pwd=" + Pwd + ", DateEmbauche=" + DateEmbauche + "]";
+		return "Recruteur [DateEmbauche=" + DateEmbauche + "]";
 	}
 
-
 	
-	
-	
-
 	
 }

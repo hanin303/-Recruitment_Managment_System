@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,10 +44,11 @@ public class CVRestService {
 	@Value("${logging.file.path}")
 	String FILE_DIRECTORY;
 	
-	private static final String DIRECTORY = "C:\\Users\\Mariem\\Desktop\\3emeAnneeDSI\\Projet Recrutement\\-Recruitment_Managment_System\\CvImported";
+	private static final String DIRECTORY = "\\-Recruitment_Managment_System\\CvImported";
 	@Autowired
     private ServletContext servletContext;
 	@RequestMapping(value="/cv/downloadCV/{code}",method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('RECRUTEUR') or hasAuthority('INTERVIEWER')")
 	public ResponseEntity<Object> DownloadCv(@PathVariable(value = "code") 
 	       Long code,HttpServletResponse response) throws IOException,Exception {
 		Cv cvDownloaded = new Cv();
@@ -91,6 +93,7 @@ public class CVRestService {
 	
 	
 	@RequestMapping(value="/cv/UploadCV",method = RequestMethod.POST)
+	@PreAuthorize("hasAuthority('CONDIDAT')")
 	public ResponseEntity<Object> UploadCv(@RequestParam("file") MultipartFile file) throws IOException{
 		File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
 		Cv cvImported = new Cv(file.getOriginalFilename());
