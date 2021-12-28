@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,14 +32,12 @@ public class UserRestService {
 	private InterviewRepository interviewRepository;
 	
 	@RequestMapping(value="/user",method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<User> getUser(){
-		return userRepository.getAllUsers();
+		return userMetier.getUser();
 	}
 	
 		
 	@RequestMapping(value="/user/{iduser}",method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('INTERVIEWER')or hasAuthority('RECRUTEUR')")
     public User getUser(@PathVariable long iduser) {
 		return userMetier.getOneUser(iduser);
 	}
@@ -48,19 +45,16 @@ public class UserRestService {
 	
 	@RequestMapping(value="/user/{iduser}",method = RequestMethod.DELETE)
 	@ResponseBody
-	@PreAuthorize("hasAuthority('ADMIN')")
 	public void deleteUser(@PathVariable long iduser) {
 			userMetier.deleteUser(iduser);
 	}
 	
 	@RequestMapping(value="/user",method = RequestMethod.POST)
-	@PreAuthorize("hasAuthority('ADMIN')")
 	public User AddUser(@RequestBody User user){
     	return userMetier.AddUser(user);
 	}
 	
 	@RequestMapping(value="/user/{iduser}",method = RequestMethod.PUT)
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('INTERVIEWER')or hasAuthority('RECRUTEUR')")
 	public ResponseEntity<User> EditUser(@PathVariable long iduser, @RequestBody User user){
 		 return ResponseEntity.ok(userMetier.EditUser(iduser, user));
     }

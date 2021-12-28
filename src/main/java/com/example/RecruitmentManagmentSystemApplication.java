@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.dao.CVRepository;
 import com.example.dao.CompetanceRepository;
@@ -25,8 +24,8 @@ import com.example.dao.QuestionnaireRepository;
 import com.example.dao.QuestionsRepository;
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
-import com.example.entities.Admin;
 import com.example.entities.Competance;
+import com.example.entities.Admin;
 import com.example.entities.Condidats;
 import com.example.entities.Contact;
 import com.example.entities.Cv;
@@ -130,7 +129,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre6);
 
 		
-	
+		//AjouterCompetance
 		Competance competance1 = new Competance(1L, "Angular", 20);
 		Competance competance2 = new Competance(2L, "Laravel", 100);
 		Competance competance3 = new Competance(3L, "Java", 50);
@@ -140,7 +139,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		competanceRep.save(competance2);
 		competanceRep.save(competance3);
 		competanceRep.save(competance4);
-		
 				
 		
 		//Ajouter deux cv
@@ -149,23 +147,12 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		CvRep.save(cv1);
 		CvRep.save(cv2);
 
-		//Ajouter 6 roles
-		Role role1=new Role(1L, "USER");
-		Role role2=new Role(2L, "ADMIN");
-		Role role3=new Role(1L, "EMPLOYEE");
-		Role role4=new Role(1L, "INTERVIEWER");
-		Role role5=new Role(1L, "RECRUTEUR");
-		Role role6=new Role(1L, "CONDIDAT");
-				
-				
+		//Ajouter 2 roles
+		Role role1=new Role(1L, "user");
+		Role role2=new Role(2L, "admin");
 		roleRepository.save(role1);
 		roleRepository.save(role2);
-		roleRepository.save(role3);
-		roleRepository.save(role4);
-		roleRepository.save(role5);
-		roleRepository.save(role6);
-			
-		
+
 		//AjouterInterview 
 		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
 		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
@@ -194,40 +181,16 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
 		User u3=new Interviewer(3L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
 		User u4=new Recruteur(4L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
-		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
-		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
+		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 22222222,53205145, "photoSamia",cv2,"G","F","I","L");
+		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",33333333,52186359, "photoIlhem",cv2,"G","F","I","L");
 		User u7=new Recruteur(7L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
-		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2",cv2,"G","F","I","L");
+		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  44444444, "photo2",cv2,"G","F","I","L");
 		User u9=new Admin();
 		u9.setCin(12345678);
 		u9.setEmail("ahmed@gmail.com");
 		u9.setPrenom("ahmed");
 		u9.setNom("ben saber");
 		User u10=new Recruteur(10L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date3,"G","F","I","L");
-		
-		
-		BCryptPasswordEncoder encoder; 
-		encoder = new BCryptPasswordEncoder();
-		
-				Admin u11=new Admin();
-				u11.setIdUser(1L);
-				u11.setPdfcv(cv1);
-				u11.setCin(12345678);
-				u11.setAdress("Tunis");
-				u11.setCin(11221122);
-				u11.setTel(54515253);
-				u11.setCompetance("c2");
-				u11.setDateEmbauche(date1);
-				u11.setEmail("ahmed@gmail.com");
-				u11.setPrenom("ahmed");
-				u11.setNom("ben saber");
-				u11.setUsername("ahmed");
-				u11.setIsAdmin(1);
-				encoder = new BCryptPasswordEncoder();
-				u11.setPassword(encoder.encode("ahmed"));
-				u11.getRoles().add(role1);
-				u11.getRoles().add(role2);
-		
 		
 		userRepository.save(u1);
 		userRepository.save(u2);		
@@ -241,12 +204,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		userRepository.save(u8);
 		userRepository.save(u9);
 		userRepository.save(u10);
-		userRepository.save(u11);
-
-
-		//ajouter un admin
-		
-			
 
 
         
@@ -302,6 +259,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 			System.out.println("**** : "+user1.get(j).toString());
 		}
 		*/
+		
+		
 		
 		userRepository.save(u5);	
 		userRepository.save(u6);

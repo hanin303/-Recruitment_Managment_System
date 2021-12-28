@@ -1,9 +1,6 @@
 package com.example.entities;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.JoinTable;
 
@@ -20,9 +17,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,7 +27,7 @@ import javax.persistence.ManyToMany;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_user",discriminatorType=DiscriminatorType.STRING,length=15)
-public class User implements Serializable , UserDetails{
+public class User implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -50,27 +44,20 @@ public class User implements Serializable , UserDetails{
 	private String LienLinkedIn;
 	private String LienInstagram;
 	
-	private String Competance;
-	private int isAdmin;
-	
-	private String username;
-	private String password;
-	private Boolean enabled;
-	
 	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JsonIgnore
 	private Set<Interview>interview;
 	
-	/*@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JsonIgnore
-	private Set<Competance> competances ;*/
+	private Set<Competance> competances ;
 	
-	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.EAGER)
     @JoinTable(name="users_roles" , joinColumns = @JoinColumn(name="idUser") , inverseJoinColumns=@JoinColumn(name="idRole"))
 	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
 
-
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cv_id")
 	private Cv pdfcv;
@@ -102,40 +89,6 @@ public class User implements Serializable , UserDetails{
 	
 
 	
-	public User(Long idUser, String nom, String prenom, String email, String adress, int cin,
-			 int tel, String photo, String competance,Cv pdfcv) {
-		super();
-		this.idUser = idUser;
-		this.Nom = nom;
-		this.Prenom = prenom;
-		this.Email = email;
-		this.Adress = adress;
-		this.Cin = cin;
-		this.tel = tel;
-		this.photo = photo;
-		this.Competance = competance;
-		this.pdfcv = pdfcv;
-		isAdmin=0;
-	}
-
-	public String getCompetance() {
-		return Competance;
-	}
-
-
-	public void setCompetance(String competance) {
-		Competance = competance;
-	}
-
-
-	public int getIsAdmin() {
-		return isAdmin;
-	}
-
-
-	public void setIsAdmin(int isAdmin) {
-		this.isAdmin = isAdmin;
-	}
 
 
 	public String getLienGithub() {
@@ -178,14 +131,14 @@ public class User implements Serializable , UserDetails{
 	}
 
 
-	/*public Set<Competance> getCompetances() {
+	public Set<Competance> getCompetances() {
 		return competances;
 	}
 
 	public void setCompetances(Set<Competance> competances) {
 		this.competances = competances;
 	}
-*/
+
 	public Long getIdUser() {
 		return idUser;
 	}
@@ -258,69 +211,6 @@ public class User implements Serializable , UserDetails{
 		this.pdfcv = pdfcv;
 	}
 
-	
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-	return false;
-	}
-	
-	@Override
-	public boolean isAccountNonLocked() {
-	return false;
-	}
-	
-	@Override
-	public boolean isCredentialsNonExpired() {
-	return false;
-	}
-	
-	@Override
-	public boolean isEnabled() {
-	return false;
-	}
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<Role> roles = this.getRoles();           
-		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		            
-		            for (Role role : roles) {
-		                authorities.add(new SimpleGrantedAuthority(role.getName()));
-		            }
-		            
-		            return authorities;
-	}
-	
-	
 
 	@Override
 	public String toString() {

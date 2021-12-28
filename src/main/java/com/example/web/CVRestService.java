@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,9 @@ import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
+//import com.google.gwt.storage.client.Storage;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,9 +47,10 @@ public class CVRestService {
 	@Value("${logging.file.path}")
 	String FILE_DIRECTORY;
 	
-	private static final String DIRECTORY = "C:\\Users\\Mariem\\Desktop\\3emeAnneeDSI\\Projet Recrutement\\-Recruitment_Managment_System\\CvImported";
+	private static final String DIRECTORY = "./CvImported/";
 	@Autowired
     private ServletContext servletContext;
+
 	@RequestMapping(value="/cv/downloadCV/{code}",method = RequestMethod.GET)
 	public ResponseEntity<Object> DownloadCv(@PathVariable(value = "code") 
 	       Long code,HttpServletResponse response) throws IOException,Exception {
@@ -89,17 +94,81 @@ public class CVRestService {
 		return new ResponseEntity<>("Downloaded cv successfully",HttpStatus.OK);
 	}
 	
+
+	/*
+	 	@RequestMapping(value="/cv/downloadCV/{code}",method = RequestMethod.GET)
+	public ResponseEntity<Object> DownloadCv(@PathVariable(value = "code") 
+	       Long code,HttpServletResponse response) throws IOException,Exception {
+		Cv cvDownloaded = new Cv();
+		Optional<Cv> result = cvRep.findById(code);
+		if(!result.isPresent()) {
+			throw new Exception("could not found cv with id :" + code);
+		}
+		cvDownloaded = result.get();
+		String fileName = cvDownloaded.getPdf();
+		
+		MediaType mediaType = MediaTypeUtils.getMediaTypeForFileName(this.servletContext, fileName);
+        System.out.println("fileName: " + fileName);
+        System.out.println("mediaType: " + mediaType);
+		
+        File file = new File(DIRECTORY + "/" + fileName);
+        
+        // Content-Type
+        // application/pdf
+        response.setContentType(mediaType.getType());
+       
+        // Content-Disposition
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, 
+        		"attachment;filename=" + file.getName());
+        
+        // Content-Length
+        response.setContentLength((int) file.length());
+        BufferedInputStream inStream = 
+        		new BufferedInputStream(new FileInputStream(file));
+        BufferedOutputStream outStream = 
+        		new BufferedOutputStream(response.getOutputStream());
+
+        byte[] buffer = new byte[1024];
+        int bytesRead = 0;
+        while ((bytesRead = inStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, bytesRead);
+        }
+        inStream.close();
+        outStream.flush();
+        
+		return new ResponseEntity<>("Downloaded cv successfully",HttpStatus.OK);
+	}
+	 */
+	  
 	
 	@RequestMapping(value="/cv/UploadCV",method = RequestMethod.POST)
-	public ResponseEntity<Object> UploadCv(@RequestParam("file") MultipartFile file) throws IOException{
+	public  ResponseEntity<Object> UploadCv(@RequestParam("file") MultipartFile file) throws IOException{
 		File myFile = new File(FILE_DIRECTORY+file.getOriginalFilename());
 		Cv cvImported = new Cv(file.getOriginalFilename());
+		System.out.println(cvImported.getIdCV());
 		cvRep.save(cvImported);
 		myFile.createNewFile();
 		FileOutputStream fos = new FileOutputStream(myFile);
 		fos.write(file.getBytes());
 		fos.close();
-		return new ResponseEntity<Object>("the file uploaded succesfully" ,HttpStatus.OK);
+		System.out.println(cvImported.getIdCV());
+		
+		  HashMap<Integer, String> hmap = new HashMap<Integer, String>();
+		  hmap.put(12, "Chaitanya");
+	      hmap.put(2, "Rahul"); 
+	      //localStorge.setItem("user", hmap);
+		
+	      //localStorage.setItem("user", JSON.stringify("Hello"));
+	      
+	      
+		/*localStorage.setItem("firstName", "Ramesh");
+		localStorage.setItem("user", JSON.stringify("Hello"));
+		storage.cregetLocalStorageIfSupported().setItem("cv",cvImported.getIdCV());
+		*/
+	   // localStorage.setItem("cv",cvImported.getIdCV());
+		//localStorage.setItem("user", JSON.stringify("Hello"));
+		
+		return new ResponseEntity<>("upload cv successfully",HttpStatus.OK);
 	}
 	
 	

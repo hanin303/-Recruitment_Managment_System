@@ -2,7 +2,6 @@ package com.example.dao;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,12 +13,6 @@ import com.example.entities.Recruteur;
 import com.example.entities.User;
 
 public interface UserRepository extends JpaRepository<User,Long>{
-	@Query(" select u from User u where u.isAdmin =0")
-	List<User> getAllUsers();
-	
-	@Query(" select u from User u where u.username = ?1")
-	Optional<User> findUserWithName(String username);
-	
 	@Query("select o from Admin o")
 	public Collection<Admin> findAllAdmins();
 	
@@ -36,6 +29,7 @@ public interface UserRepository extends JpaRepository<User,Long>{
 	
 	@Query("select year(o.DateEmbauche), count(o) from User o where o.DateEmbauche!=null GROUP BY year(o.DateEmbauche) ")
 	public List<String> findAllUsers();
+	
 }
 
 

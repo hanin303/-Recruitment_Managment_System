@@ -51,7 +51,7 @@ public class ImplRole  implements InterRoleMetier {
 	public Role EditRole(long idRole, Role role) {
 		Role r = roleRepository.findById(idRole).orElseThrow(()->new ResourceNotFoundException("Ct utilisateur n'existe pas"));
 		r.setIdRole(role.getIdRole());
-		r.setName(role.getName());
+		r.setRole_type(role.getRole_type());
 		roleRepository.save(r);
 	  	return r;
 	}
