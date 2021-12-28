@@ -50,7 +50,6 @@ public class CondidatRestService {
 	}
 	
 	@RequestMapping(value="/condidats/{idOffre}",method = RequestMethod.POST)
-	@PreAuthorize("hasAuthority('CONDIDAT')")
 	public void AddCondidat(@RequestBody Condidats user,@PathVariable long idOffre){
 		        condMetier.AddCondidat(user,idOffre);
 	}

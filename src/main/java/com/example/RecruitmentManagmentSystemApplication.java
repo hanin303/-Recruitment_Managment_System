@@ -303,8 +303,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		}
 		*/
 		
-		
-		
 		userRepository.save(u5);	
 		userRepository.save(u6);
 
