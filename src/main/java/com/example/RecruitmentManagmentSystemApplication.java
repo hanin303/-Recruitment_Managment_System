@@ -16,7 +16,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.CVRepository;
-//import com.example.dao.ContactRepository;
+import com.example.dao.ContactRepository;
 import com.example.dao.InterviewRepository;
 import com.example.dao.OffreEmploiRepository;
 import com.example.dao.QuestionnaireRepository;
@@ -25,12 +25,11 @@ import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
 import com.example.entities.Admin;
 import com.example.entities.Condidats;
-//import com.example.entities.Contact;
+import com.example.entities.Contact;
 import com.example.entities.Cv;
 import com.example.entities.Interview;
 import com.example.entities.Interviewer;
 import com.example.entities.OffreEmploi;
-import com.example.entities.Questionnaire;
 import com.example.entities.Questions;
 import com.example.entities.Recruteur;
 import com.example.entities.Role;
@@ -55,11 +54,15 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	@Autowired
 	private RoleRepository roleRepository;
 	
+	/*@Autowired
+	private CompetanceRepository competanceRep;*/
+	
+	@Autowired
+	private ContactRepository contactRepository;
+   
 	@Autowired
 	private InterviewRepository interviewRepository;
-	
-	/*@Autowired
-	private ContactRepository contactRepository;*/
+
 	
 	@Autowired
 	CondidatRestService condRS;
@@ -123,6 +126,19 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre5);
 		OffreRep.save(Offre6);
 
+		
+	/*	//AjouterCompetance
+		Competance competance1 = new Competance(1L, "Angular", 20);
+		Competance competance2 = new Competance(2L, "Laravel", 100);
+		Competance competance3 = new Competance(3L, "Java", 50);
+		Competance competance4 = new Competance(4L, "Spring Boot", 70);
+
+		competanceRep.save(competance1);
+		competanceRep.save(competance2);
+		competanceRep.save(competance3);
+		competanceRep.save(competance4);*/
+				
+		
 		//Ajouter deux cv
 		Cv cv1 = new Cv("cv1.pdf");
 		Cv cv2 = new Cv("cv2.pdf");
@@ -135,44 +151,61 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		roleRepository.save(role1);
 		roleRepository.save(role2);
 
+		//AjouterInterview 
+		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
+		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
+		Interview interview3 = new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0);
+		
+		interviewRep.save(interview1);
+		interviewRep.save(interview2);
+		interviewRep.save(interview3);
+		
+		//AjouterQuestions
+		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
+		Questions questions2 = questionsRep.save(new Questions(2L, "Why do you want to leave your current job?"));
+		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
+		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
+
+		//contact 
+	    Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
+
+		
 		//Ajouter 2 users
 		Date date1=new Date("12/12/2012");
 		Date date2=new Date("1/1/2015");
 		Date date3=new Date("10/1/2015");
 		
-		User u3=new Interviewer(1L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
-		User u4=new Recruteur(1L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date1);
-
-		User u10=new Recruteur(1L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date3);
-		User u7=new Recruteur(1L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo", "c1",cv1,"1234",date2);
-		User u8=new Condidats(2L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2", "c2",cv2);
+		User u1=new Condidats(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
+		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
+		User u3=new Interviewer(3L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
+		User u4=new Recruteur(4L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
+		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
+		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
+		User u7=new Recruteur(7L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
+		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2",cv2,"G","F","I","L");
 		User u9=new Admin();
 		u9.setCin(12345678);
 		u9.setEmail("ahmed@gmail.com");
 		u9.setPrenom("ahmed");
 		u9.setNom("ben saber");
-		userRepository.save(u9);
-
-		User u2=new Condidats(2L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam", "c2",cv2);
-		User u5=new Condidats(3L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia", "c2",cv2);
-		User u6=new Condidats(4L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem", "c2",cv2);
+		User u10=new Recruteur(10L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date3,"G","F","I","L");
 		
-
-		userRepository.save(u4);
-		userRepository.save(u2);
+		userRepository.save(u1);
+		userRepository.save(u2);		
+		userRepository.save(u3);
 		u3.getRoles().add(role1);
 		userRepository.save(u3);
-
+		userRepository.save(u4);
 		userRepository.save(u5);
 		userRepository.save(u6);
 		userRepository.save(u7);
-		
 		userRepository.save(u8);
 		userRepository.save(u9);
 		userRepository.save(u10);
 
 
-System.out.println("classe name : "+u2.getClass().getSimpleName());
+        
+		System.out.println("classe name : "+u2.getClass().getSimpleName());
 
 		
 		Date date=new Date();
@@ -189,7 +222,8 @@ System.out.println("classe name : "+u2.getClass().getSimpleName());
 		int j;
 		l.addAll(l1);		
 
-		System.out.println("**** : "+l.toString());*/
+		System.out.println("**** : "+l.toString());
+   */
 		List<String>s=userRepository.findAllUsers();
 		String annee1=s.get(0).charAt(0)+""+s.get(0).charAt(1)+""+s.get(0).charAt(2)+""+s.get(0).charAt(3);
 		String annee2=s.get(1).charAt(0)+""+s.get(1).charAt(1)+""+s.get(1).charAt(2)+""+s.get(1).charAt(3);
@@ -224,28 +258,11 @@ System.out.println("classe name : "+u2.getClass().getSimpleName());
 		}
 		*/
 		
+		
+		
 		userRepository.save(u5);	
 		userRepository.save(u6);
 
-		
-		
-		//AjouterInterview 
-		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
-		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
-		Interview interview3 = new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0);
-		
-		interviewRep.save(interview1);
-		interviewRep.save(interview2);
-		interviewRep.save(interview3);
-		
-		//AjouterQuestions
-		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
-		Questions questions2 = questionsRep.save(new Questions(2L, "Why do you want to leave your current job?"));
-		Questions questions3 = questionsRep.save(new Questions(3L,  "What makes you the perfect condidate for this position?"));
-		Questions questions4 = questionsRep.save(new Questions(4L,  "Where do you see yourself five (ten or fifteen) years from now?"));
-
-		//contact 
-	//	Contact contact1 = contactRepository.save(new Contact (1L,"hanin", "benjemaa", "hanin@gmail.com", "when will you accept me ?"));
 
 	}
 	

@@ -67,16 +67,18 @@ public class ImplUser implements InterUserMetier {
 	@Override
 	public User EditUser(long id, User user) {
 		User u = userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Cet utilisateur n'existe pas"));
-		
 			u.setIdUser(user.getIdUser());
 			u.setNom(user.getNom());
 			u.setPrenom(user.getPrenom());
 			u.setAdress(user.getAdress());
 			u.setCin(user.getCin());
 			u.setEmail(user.getEmail());
-			u.setCompetance(user.getCompetance());
 			u.setTel(user.getTel());
 			u.setPhoto(user.getPhoto());
+			u.setLienGithub(user.getLienGithub());
+			u.setLienFacebook(user.getLienFacebook());
+			u.setLienInstagram(user.getLienInstagram());
+			u.setLienLinkedIn(user.getLienLinkedIn());
 			userRepository.save(u);
 			
 	  	return u;

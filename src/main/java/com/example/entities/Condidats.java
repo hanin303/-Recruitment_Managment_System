@@ -15,8 +15,8 @@ public class Condidats extends User{
 	}
 
 	public Condidats(Long idUser, String nom, String prenom, String email, String adress, int cin,
-			 int tel, String photo, String competance,Cv pdfcv) {
-		super(idUser,nom,prenom,email,adress,cin,tel,photo, competance,pdfcv);
+			 int tel, String photo,Cv pdfcv,String LienG,String LienF,String LienI,String LienL) {
+		super(idUser,nom,prenom,email,adress,cin,tel,photo,pdfcv,LienG,LienF,LienI,LienL);
 		// TODO Auto-generated constructor stub
 	}
 	
