@@ -57,7 +57,7 @@ public class User implements Serializable{
 	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
 
-
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cv_id")
 	private Cv pdfcv;

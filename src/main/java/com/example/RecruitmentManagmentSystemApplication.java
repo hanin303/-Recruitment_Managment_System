@@ -181,10 +181,10 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
 		User u3=new Interviewer(3L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
 		User u4=new Recruteur(4L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
-		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
-		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
+		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 22222222,53205145, "photoSamia",cv2,"G","F","I","L");
+		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",33333333,52186359, "photoIlhem",cv2,"G","F","I","L");
 		User u7=new Recruteur(7L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
-		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2",cv2,"G","F","I","L");
+		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  44444444, "photo2",cv2,"G","F","I","L");
 		User u9=new Admin();
 		u9.setCin(12345678);
 		u9.setEmail("ahmed@gmail.com");
