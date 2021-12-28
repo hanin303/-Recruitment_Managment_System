@@ -18,10 +18,10 @@ public class Role implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long idRole;
-	private String Role_type;
+	private String name;
 	
 	
-	@ManyToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY , mappedBy = "roles" )
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "roles")
 	@JsonIgnore
     private Set<User> users = new HashSet<>();
 	
@@ -30,10 +30,15 @@ public class Role implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Role(Long idRole, String role_type) {
+	public Role(Long idRole, String name) {
 		super();
 		this.idRole = idRole;
-		Role_type = role_type;
+		this.name = name;
+	}
+
+	public Role(String name) {
+		super();
+		this.name = name;
 	}
 
 	public Long getIdRole() {
@@ -44,12 +49,12 @@ public class Role implements Serializable {
 		this.idRole = idRole;
 	}
 
-	public String getRole_type() {
-		return Role_type;
+	public String getName() {
+		return name;
 	}
 
-	public void setRole_type(String role_type) {
-		Role_type = role_type;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Set<User> getUsers() {
