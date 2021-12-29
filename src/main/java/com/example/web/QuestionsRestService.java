@@ -23,7 +23,6 @@ public class QuestionsRestService {
 	private QuestionsMetier questionsMetier;
 
 	@RequestMapping(value ="/Questions" , method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('INTERVIEWER')")
 	public List<Questions> getQuestions(){
 		return  questionsMetier.getQuestions();
 	}

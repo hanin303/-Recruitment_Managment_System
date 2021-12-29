@@ -33,7 +33,6 @@ public class UserRestService {
 	private InterviewRepository interviewRepository;
 	
 	@RequestMapping(value="/user",method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<User> getUser(){
 		return userRepository.getAllUsers();
 	}
@@ -114,6 +113,14 @@ public class UserRestService {
 		User u=userRepository.findById(iduser).get();
 		System.out.println("**********"+u.getNom());
 		return u.getClass().getSimpleName();
+	}
+	
+	
+	@RequestMapping(value = "/getUserAuth/{name}", method = RequestMethod.GET)
+	 public User getUserAuth(@PathVariable String name) {
+		User u=userRepository.findUserWithName(name).get();
+		System.out.println("**********"+u.getNom());
+		return u;
 	}
 	
 
