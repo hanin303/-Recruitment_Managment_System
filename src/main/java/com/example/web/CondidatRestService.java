@@ -62,7 +62,6 @@ public class CondidatRestService {
 	}
 	
 	@RequestMapping(value="/condidats/{idOffre}",method = RequestMethod.POST)
-	@PreAuthorize("hasAuthority('CONDIDAT')")
 	public void AddCondidat(@RequestBody Condidats user,@PathVariable long idOffre){
 		List<Condidats> CondidatList = this.getCondidats();	
 		Condidats CondAj = new Condidats();

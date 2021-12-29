@@ -68,7 +68,7 @@ public AccessDeniedHandler  accessDeniedHandler() {
 		.antMatchers("/user").authenticated()
 		.antMatchers("/condidats").permitAll()
 		.antMatchers("/contact").permitAll()
-		.antMatchers("/cv").authenticated()
+		.antMatchers("/cv").permitAll()
 		.antMatchers("/Interview").permitAll()
 		.antMatchers("/offers").permitAll()
 		.antMatchers("/Questionnaire").authenticated()
