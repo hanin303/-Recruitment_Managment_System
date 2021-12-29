@@ -28,7 +28,6 @@ public class InterviewRestService {
 
 	
 	@RequestMapping(value ="/Interview" , method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('RECRUTEUR') or hasAuthority('INTERVIEWER')")
 	public List<Interview> getInterview(){
 		return  interviewMetier.getInterview();
 	}

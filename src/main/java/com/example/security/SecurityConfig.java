@@ -66,10 +66,10 @@ public AccessDeniedHandler  accessDeniedHandler() {
 
 		.antMatchers("/logout").authenticated()
 		.antMatchers("/user").authenticated()
-		.antMatchers("/condidats").authenticated()
-		.antMatchers("/contact").authenticated()
+		.antMatchers("/condidats").permitAll()
+		.antMatchers("/contact").permitAll()
 		.antMatchers("/cv").authenticated()
-		.antMatchers("/Interview").authenticated()
+		.antMatchers("/Interview").permitAll()
 		.antMatchers("/offers").permitAll()
 		.antMatchers("/Questionnaire").authenticated()
 		.antMatchers("/Questions").authenticated()

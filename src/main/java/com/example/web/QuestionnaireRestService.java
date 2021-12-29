@@ -24,7 +24,6 @@ public class QuestionnaireRestService {
 	private QuestionnaireMetier questionnaireMetier;
 
 	@RequestMapping(value ="/Questionnaire" , method = RequestMethod.GET)
-	@PreAuthorize("hasAuthority('ADMIN')  or hasAuthority('INTERVIEWER')")
 	public List<Questionnaire> getQuestionnaire(){
 		return  questionnaireMetier.getQuestionnaire();
 	}
