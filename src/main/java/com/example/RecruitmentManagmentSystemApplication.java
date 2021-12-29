@@ -189,11 +189,12 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Date date1=new Date("12/12/2012");
 		Date date2=new Date("1/1/2015");
 		Date date3=new Date("10/1/2015");
+		Date date4=new Date("08/02/2016");
 		
-		User u1=new Condidats(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
+		User u1=new Interviewer(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
 		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
-		User u3=new Interviewer(3L,"nour", "guerfali", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date1,"G","F","I","L");
-		User u4=new Recruteur(4L,"Hanin", "benJemaa", "aaaa", "aaaa", 1111111, 12345678, "photo", cv1,"1234",date1,"G","F","I","L");
+		User u3=new Interviewer(3L,"Dorra", "Ayari", "dorraayari@gmail.com", "Bizerte", 11221122, 56458795, "photo",cv1,"1234",date1,"G","F","I","L");
+		User u4=new Recruteur(4L,"Hanin", "benJemaa", "haninbenjemaa@gmail.com", "Bizerte", 11429204, 54891319, "photo", cv1,"1234",date1,"G","F","I","L");
 		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
 		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
 		User u7=new Recruteur(7L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
@@ -227,13 +228,45 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				u11.setPassword(encoder.encode("ahmed"));
 				u11.getRoles().add(role1);
 				u11.getRoles().add(role2);
+				
+				
+				
+				Admin u12=new Admin();
+				u12.setIdUser(1L);
+				u12.setPdfcv(cv1);
+				u12.setAdress("Bizerte");
+				u12.setCin(11431134);
+				u12.setTel(54546450);
+				u12.setCompetance("c2");
+				u12.setDateEmbauche(date4);
+				u12.setEmail("nouguerfali08@gmail.com");
+				u12.setPrenom("Nour");
+				u12.setNom("Guerfali");
+				u12.setUsername("nour");
+				u12.setIsAdmin(1);
+				encoder = new BCryptPasswordEncoder();
+				u12.setPassword(encoder.encode("nour"));
+				u12.getRoles().add(role1);
+				u12.getRoles().add(role2);
+				
+				
+				u1.setUsername("maryem");
+				u1.setPassword(encoder.encode("maryem"));
+				u1.getRoles().add(role1);
+				u1.getRoles().add(role4);
+				
+				
+				u4.setUsername("hanin");
+				u4.setPassword(encoder.encode("hanin"));
+				u4.getRoles().add(role1);
+				u4.getRoles().add(role5);
+				
 		
 		
 		userRepository.save(u1);
 		userRepository.save(u2);		
 		userRepository.save(u3);
 		u3.getRoles().add(role1);
-		userRepository.save(u3);
 		userRepository.save(u4);
 		userRepository.save(u5);
 		userRepository.save(u6);
@@ -242,6 +275,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		userRepository.save(u9);
 		userRepository.save(u10);
 		userRepository.save(u11);
+		userRepository.save(u12);
 
 
 		//ajouter un admin
@@ -303,11 +337,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		}
 		*/
 		
-		
-		
-		userRepository.save(u5);	
-		userRepository.save(u6);
-
 
 	}
 	
