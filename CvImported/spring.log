@@ -1,0 +1,149 @@
+2021-12-29 00:25:55.679 ERROR 21372 --- [http-nio-3800-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+com.auth0.jwt.exceptions.TokenExpiredException: The Token has expired on Wed Dec 29 00:25:53 GMT+01:00 2021.
+	at com.auth0.jwt.JWTVerifier.assertDateIsFuture(JWTVerifier.java:441) ~[java-jwt-3.4.1.jar:na]
+	at com.auth0.jwt.JWTVerifier.assertValidDateClaim(JWTVerifier.java:432) ~[java-jwt-3.4.1.jar:na]
+	at com.auth0.jwt.JWTVerifier.verifyClaims(JWTVerifier.java:373) ~[java-jwt-3.4.1.jar:na]
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:355) ~[java-jwt-3.4.1.jar:na]
+	at com.example.security.JWTAuthorizationFiler.doFilterInternal(JWTAuthorizationFiler.java:49) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.5.3.jar:5.5.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.12.jar:5.3.12]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1722) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.54.jar:9.0.54]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_251]
+
+2021-12-29 00:48:41.296  INFO 21372 --- [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-12-29 00:48:41.296  INFO 21372 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-12-29 00:48:42.234  INFO 21372 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 00:48:42.328  INFO 21372 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2021-12-29 00:48:42.359  INFO 21372 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2021-12-29 00:48:59.988  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : Starting RecruitmentManagmentSystemApplication using Java 1.8.0_251 on DESKTOP-IUEN8B6 with PID 15256 (C:\Users\Nour\Desktop\Projets\Projet_Integration\Projet_28-12-2021\-Recruitment_Managment_System\target\classes started by Nour in C:\Users\Nour\Desktop\Projets\Projet_Integration\Projet_28-12-2021\-Recruitment_Managment_System)
+2021-12-29 00:48:59.990  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : No active profile set, falling back to default profiles: default
+2021-12-29 00:49:00.135  INFO 15256 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\Nour\.m2\repository\org\glassfish\hk2\hk2\2.6.1\hk2-2.6.1.jar referenced one or more files that do not exist: file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/hk2-utils.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/jakarta.annotation-api.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/jakarta.inject.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/hk2-api.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/aopalliance-repackaged.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/hk2-core.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/hk2-locator.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/javassist.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/hk2-runlevel.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/class-model.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/asm.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/asm-analysis.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/asm-commons.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/asm-tree.jar,file:/C:/Users/Nour/.m2/repository/org/glassfish/hk2/hk2/2.6.1/asm-util.jar
+2021-12-29 00:49:00.135  INFO 15256 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-29 00:49:00.136  INFO 15256 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-29 00:49:02.300  INFO 15256 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-29 00:49:02.628  INFO 15256 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 309 ms. Found 10 JPA repository interfaces.
+2021-12-29 00:49:03.700  INFO 15256 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2000226a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-12-29 00:49:03.721  INFO 15256 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-12-29 00:49:04.747  INFO 15256 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3800 (http)
+2021-12-29 00:49:04.769  INFO 15256 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-29 00:49:04.770  INFO 15256 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2021-12-29 00:49:05.096  INFO 15256 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-29 00:49:05.097  INFO 15256 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4958 ms
+2021-12-29 00:49:06.019  INFO 15256 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-29 00:49:06.150  INFO 15256 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-29 00:49:06.610  INFO 15256 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-29 00:49:06.871  INFO 15256 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-29 00:49:07.151  INFO 15256 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-29 00:49:07.189  INFO 15256 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2021-12-29 00:49:16.172  INFO 15256 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-29 00:49:16.195  INFO 15256 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 00:49:17.797  WARN 15256 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-29 00:49:18.694  INFO 15256 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22e6765, org.springframework.security.web.context.SecurityContextPersistenceFilter@6677a9e4, org.springframework.security.web.header.HeaderWriterFilter@40fc0de9, org.springframework.security.web.authentication.logout.LogoutFilter@51f8ef06, com.example.security.JWTAuthorizationFiler@ee08ac6, com.example.security.JWTAuthenticationFilter@1bdddec3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3346b96d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4cda9d11, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d9f33b4, org.springframework.security.web.session.SessionManagementFilter@7bf74780, org.springframework.security.web.access.ExceptionTranslationFilter@7eba3770, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3e3ba9db]
+2021-12-29 00:49:20.256  WARN 15256 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-12-29 00:49:20.898  INFO 15256 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-29 00:49:20.984  INFO 15256 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3800 (http) with context path ''
+2021-12-29 00:49:21.013  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : Started RecruitmentManagmentSystemApplication in 22.989 seconds (JVM running for 25.266)
+2021-12-29 00:49:41.070  INFO 15256 --- [http-nio-3800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-29 00:49:41.070  INFO 15256 --- [http-nio-3800-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-29 00:49:41.074  INFO 15256 --- [http-nio-3800-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2021-12-29 01:03:34.070  INFO 15256 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 01:03:34.155  INFO 15256 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-29 01:03:34.226  INFO 15256 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-29 01:03:35.590  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : Starting RecruitmentManagmentSystemApplication using Java 1.8.0_251 on DESKTOP-IUEN8B6 with PID 15256 (C:\Users\Nour\Desktop\Projets\Projet_Integration\Projet_28-12-2021\-Recruitment_Managment_System\target\classes started by Nour in C:\Users\Nour\Desktop\Projets\Projet_Integration\Projet_28-12-2021\-Recruitment_Managment_System)
+2021-12-29 01:03:35.591  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : No active profile set, falling back to default profiles: default
+2021-12-29 01:03:36.641  INFO 15256 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-29 01:03:36.821  INFO 15256 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 178 ms. Found 10 JPA repository interfaces.
+2021-12-29 01:03:37.092  INFO 15256 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6e5b9ce1' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-12-29 01:03:37.096  INFO 15256 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-12-29 01:03:37.621  INFO 15256 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3800 (http)
+2021-12-29 01:03:37.622  INFO 15256 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-29 01:03:37.624  INFO 15256 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2021-12-29 01:03:37.683  INFO 15256 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-29 01:03:37.683  INFO 15256 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2064 ms
+2021-12-29 01:03:37.925  INFO 15256 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-29 01:03:37.998  INFO 15256 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-12-29 01:03:38.012  INFO 15256 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-12-29 01:03:38.013  INFO 15256 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2021-12-29 01:03:39.475  INFO 15256 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-29 01:03:39.476  INFO 15256 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 01:03:41.825  WARN 15256 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-29 01:03:42.285  INFO 15256 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ed62704, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a484113, org.springframework.security.web.header.HeaderWriterFilter@327a307d, org.springframework.security.web.authentication.logout.LogoutFilter@2cafe4e8, com.example.security.JWTAuthorizationFiler@488dc359, com.example.security.JWTAuthenticationFilter@74b0f9e8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9504302, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a4091c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c7d7a1d, org.springframework.security.web.session.SessionManagementFilter@30ddb060, org.springframework.security.web.access.ExceptionTranslationFilter@475c9ce4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a0240fb]
+2021-12-29 01:03:43.130  WARN 15256 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-12-29 01:03:43.709  INFO 15256 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-29 01:03:43.816  INFO 15256 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3800 (http) with context path ''
+2021-12-29 01:03:43.871  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : Started RecruitmentManagmentSystemApplication in 8.461 seconds (JVM running for 888.124)
+2021-12-29 01:03:44.978  INFO 15256 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-12-29 01:04:02.980  INFO 15256 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 01:04:02.989  INFO 15256 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-12-29 01:04:03.012  INFO 15256 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-12-29 01:04:04.751  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : Starting RecruitmentManagmentSystemApplication using Java 1.8.0_251 on DESKTOP-IUEN8B6 with PID 15256 (C:\Users\Nour\Desktop\Projets\Projet_Integration\Projet_28-12-2021\-Recruitment_Managment_System\target\classes started by Nour in C:\Users\Nour\Desktop\Projets\Projet_Integration\Projet_28-12-2021\-Recruitment_Managment_System)
+2021-12-29 01:04:04.752  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : No active profile set, falling back to default profiles: default
+2021-12-29 01:04:06.456  INFO 15256 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-29 01:04:07.408  INFO 15256 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 950 ms. Found 10 JPA repository interfaces.
+2021-12-29 01:04:07.618  INFO 15256 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@44ff12d2' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-12-29 01:04:07.620  INFO 15256 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-12-29 01:04:08.325  INFO 15256 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 3800 (http)
+2021-12-29 01:04:08.327  INFO 15256 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-29 01:04:08.328  INFO 15256 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2021-12-29 01:04:08.399  INFO 15256 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-29 01:04:08.399  INFO 15256 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3641 ms
+2021-12-29 01:04:08.677  INFO 15256 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-29 01:04:08.719  INFO 15256 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-12-29 01:04:08.788  INFO 15256 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-12-29 01:04:08.789  INFO 15256 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2021-12-29 01:04:14.061  INFO 15256 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-29 01:04:14.062  INFO 15256 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 01:04:15.483  WARN 15256 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-29 01:04:16.225  INFO 15256 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@261a423a, org.springframework.security.web.context.SecurityContextPersistenceFilter@33afdede, org.springframework.security.web.header.HeaderWriterFilter@7cf46d12, org.springframework.security.web.authentication.logout.LogoutFilter@3858ab20, com.example.security.JWTAuthorizationFiler@3adf981, com.example.security.JWTAuthenticationFilter@dafdcc1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3a723ca3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65b14a02, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@473761c9, org.springframework.security.web.session.SessionManagementFilter@3624c924, org.springframework.security.web.access.ExceptionTranslationFilter@2d170b8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@69e466c3]
+2021-12-29 01:04:17.046  WARN 15256 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2021-12-29 01:04:17.541  INFO 15256 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-29 01:04:17.604  INFO 15256 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 3800 (http) with context path ''
+2021-12-29 01:04:17.616  INFO 15256 --- [restartedMain] .e.RecruitmentManagmentSystemApplication : Started RecruitmentManagmentSystemApplication in 12.965 seconds (JVM running for 921.869)
+2021-12-29 01:04:19.424  INFO 15256 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-12-29 01:04:25.478  INFO 15256 --- [http-nio-3800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
