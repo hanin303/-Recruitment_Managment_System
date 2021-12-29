@@ -39,7 +39,6 @@ public class InterviewRestService {
 	}
 
 	@RequestMapping(value ="/Interview" , method = RequestMethod.POST)
-	@PreAuthorize("hasAuthority('INTERVIEWER')")
 	public Interview AddInterview(@RequestBody Interview interviewAdd) {
 		return interviewMetier.AddInterview(interviewAdd);
 	}
