@@ -1,0 +1,40 @@
+.mat-toolbar{
+    background-color: rgb(10, 153, 153);
+    color: white;
+  }
+  .mat-button{
+     color: white;
+  }
+  .spacer{
+    flex: 1 1 auto;
+  }
+
+#parg{
+    font-size: 20px;
+}
+
+
+.dropdown:hover .dropdown-content {display: block;}
+#toolbar{
+    height: 74px;
+   /* position: fixed;
+    overflow: hidden;
+    top: 0;
+    width: 100%;*/
+}
+
+a{
+  font-size: 20px;
+
+}
+.log{
+  margin-left:640px;
+  color:white;
+  font-size: 20px;
+  }
+
+.logo{
+  max-width:70px;
+  margin-top :6px;
+
+}

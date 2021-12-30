@@ -1,0 +1,46 @@
+<mat-toolbar color="primary" id="toolbar" class="expanded-toolbar">
+  <span>
+    <img class="logo" src="assets/logovert.png">
+  </span>
+<br>
+  <div fxLayout="row">
+    <a mat-button routerLink="/">
+      <mat-icon>home</mat-icon> Home Page
+    </a>
+    <a mat-button routerLink="/contact">
+      <mat-icon>perm_contact_calendar</mat-icon>
+      Contact
+    </a>
+
+    <button id="parg" mat-button [mat-menu-trigger-for]="menu" fxHide="false">
+      <mat-icon>info</mat-icon>
+      About us
+    </button>
+    <mat-menu #menu="matMenu">
+      <button  mat-menu-item routerLink="/apropos">
+        <mat-icon>info</mat-icon>
+       History
+      </button>
+
+      <button mat-menu-item routerLink="/equipe">
+        <mat-icon>group</mat-icon>
+       Our Team
+      </button>
+      <button mat-menu-item routerLink="/service">
+        <mat-icon>local_laundry_service</mat-icon>
+        Services
+      </button>
+    </mat-menu>
+    <a mat-button (click)="ShowResult()">
+      <i class="fa fa-list-alt" aria-hidden="true"></i> Results
+    </a>
+
+  </div>
+  <button type="button"
+          class="btn btn-outline-info"
+          mat-menu-item routerLink="/login"
+          *ngIf="authService.isloggedIn == false"
+          class="log"
+          > Login</button>
+</mat-toolbar>
+

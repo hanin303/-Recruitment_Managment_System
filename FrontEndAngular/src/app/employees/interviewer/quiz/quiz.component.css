@@ -1,0 +1,28 @@
+.card
+{
+  max-width: 800px;
+  margin: 0 auto ;
+  padding : 10px ;
+}
+li{
+  list-style-type: none;
+  cursor:pointer;
+  margin: 10px 0 ;
+}
+
+.card{
+  max-width: 1000px !important;
+  padding: 10px;
+  padding-left: 30px;
+}
+.mt-5, .my-5 {
+  padding-top: 3rem!important;
+  padding-bottom: 3rem !important;
+  margin-top: 0rem!important;
+}
+li .card:hover{
+  border: 1px solid blue;
+}
+ol{
+  padding: 0;
+}

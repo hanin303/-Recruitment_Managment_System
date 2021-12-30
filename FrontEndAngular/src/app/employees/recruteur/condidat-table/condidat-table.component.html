@@ -1,0 +1,80 @@
+<!-- <head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+ -->
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" id="card-Table">
+        <div class="card">
+          <div class="card-header card-header-danger" id="title-Table">
+            <h3 class="card-title" id="titre">Condidats Table</h3><br>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive" >
+              <table class="table" >
+                <thead class=" text-primary" >
+                  <th id="entete-Table">
+                    Condidat Name
+                  </th>
+                  <th id="entete-Table">
+                    Offer Name
+                  </th>
+                  <th id="entete-Table">
+                    CV Condidat
+                  </th>
+                  <th id="entete-Table">
+                    Action
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let interview of interviewsList">
+                    <td>
+                      <a  id="LienDetails" (click) ="DetailsCondidat(interview)">
+                        {{interview.user?.nom}}
+                        {{interview.user?.prenom}}
+                      </a>
+                    </td>
+                    <td>
+                      <a  id="LienDetails" (click) ="DetailsOffer(interview)">
+                        {{interview.offre?.titre}}
+                        </a>
+                    </td>
+                    <td>
+                        {{interview.user?.pdfcv?.pdf}}
+                    </td>
+                    <td class="text-primary">
+                      <a (click) ="DownLoadCv(interview)" class="download" data-toggle="modal" title="Download Cv"><mat-icon>cloud_download</mat-icon></a>
+                      <a *ngIf="authService.isRecruteur()" (click) ="deleteCondidat(interview)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" ><i title="Delete Condidat" class="fas fa-times"></i></i></a>
+                      <a *ngIf="authService.isRecruteur()" (click) ="PasserAuInterview(interview)" class="acceptCond" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" ><i title="go to interview" class="fas fa-check"></i></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div class="toast {{ShowToast}}" id="ToastDiv" >
+  <div id={{idTitle}} class="toast-header">
+    <strong class="mr-auto">
+      <span class="mr-3">
+      <i *ngIf="Toast[0] == 'Success'" class="fas fa-check"></i>
+      <i *ngIf="Toast[0] == 'Failed'" class="fas fa-exclamation-triangle"></i>
+    </span>
+      {{Toast[0]}}</strong>
+    <small style="color: gray;">
+      {{counter}} second ago</small>
+  </div>
+  <div id={{idContenu}} class="toast-body">
+    {{Toast[1]}}
+  </div>
+</div>
+
