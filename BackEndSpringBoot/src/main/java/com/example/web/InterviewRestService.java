@@ -44,7 +44,7 @@ public class InterviewRestService {
 	}
 
 	@RequestMapping(value ="/Interview/{id_Interview}" , method = RequestMethod.PUT)
-	@PreAuthorize("hasAuthority('INTERVIEWER')")
+	@PreAuthorize("hasAuthority('INTERVIEWER') or hasAuthority('RECRUTEUR')")
 	public ResponseEntity<Interview> EditInterview(@PathVariable long id_Interview ,@RequestBody Interview interviewUpdate ){
 		return ResponseEntity.ok(interviewMetier.EditInterview(id_Interview,interviewUpdate));
 	}
