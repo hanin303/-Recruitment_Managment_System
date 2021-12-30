@@ -182,19 +182,19 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Date date3=new Date("10/1/2015");
 		Date date4=new Date("08/02/2016");
 		
-		Interviewer u1=new Interviewer(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
+		User u1=new Interviewer(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
 		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
-		Interviewer u3=new Interviewer(3L,"Dorra", "Ayari", "dorraayari@gmail.com", "Bizerte", 11221122, 56458795, "photo",cv1,"1234",date1,"G","F","I","L");
-		Recruteur u4=new Recruteur(4L,"Hanin", "benJemaa", "haninbenjemaa@gmail.com", "Bizerte", 11429204, 54891319, "photo", cv1,"1234",date1,"G","F","I","L");
+		User u3=new Interviewer(3L,"Dorra", "Ayari", "dorraayari@gmail.com", "Bizerte", 11221122, 56458795, "photo",cv1,"1234",date1,"G","F","I","L");
+		User u4=new Recruteur(4L,"Hanin", "benJemaa", "haninbenjemaa@gmail.com", "Bizerte", 11429204, 54891319, "photo", cv1,"1234",date3,"G","F","I","L");
 		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
-		Recruteur u7=new Recruteur(7L,"Hend", "hend", "hendamri102@gùail.com", "Tunis", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
-		Recruteur u9=new Recruteur();
+		User u7=new Recruteur(7L,"Hend", "hend", "hendamri102@gùail.com", "Tunis", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
+		User u9=new Recruteur();
 		u9.setCin(12345678);
 		u9.setEmail("ahmed@gmail.com");
 		u9.setPrenom("ahmed");
 		u9.setNom("ben saber");
 		u9.setDateEmbauche(date1);
-		User u10=new Recruteur(10L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date3,"G","F","I","L");
+		User u10=new Recruteur(10L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date4,"G","F","I","L");
 		
 		u1.setDateEmbauche(date1);
 		u7.setDateEmbauche(date3);
@@ -203,7 +203,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		BCryptPasswordEncoder encoder; 
 		encoder = new BCryptPasswordEncoder();
 		
-				Admin u11=new Admin();
+			User u11=new Recruteur();
 				u11.setIdUser(1L);
 				u11.setPdfcv(cv1);
 				u11.setCin(12345678);
@@ -211,7 +211,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				u11.setCin(11221122);
 				u11.setTel(54515253);
 				u11.setCompetance("c2");
-				u11.setDateEmbauche(date1);
+				u11.setDateEmbauche(date2);
 				u11.setEmail("ahmed@gmail.com");
 				u11.setPrenom("ahmed");
 				u11.setNom("ben saber");
@@ -224,7 +224,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				
 				
 				
-				Admin u12=new Admin();
+				User u12=new Admin();
 				u12.setIdUser(1L);
 				u12.setPdfcv(cv1);
 				u12.setAdress("Bizerte");

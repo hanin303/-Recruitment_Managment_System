@@ -2,6 +2,7 @@ package com.example.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,6 +50,7 @@ public class User implements Serializable , UserDetails{
 	private String LienFacebook;
 	private String LienLinkedIn;
 	private String LienInstagram;
+	private Date DateEmbauche;
 	
 	private String Competance;
 	private int isAdmin;
@@ -185,11 +187,25 @@ public class User implements Serializable , UserDetails{
 	public void setCompetances(Set<Competance> competances) {
 		this.competances = competances;
 	}
+	
 */
+	
+	
+	
 	public Long getIdUser() {
 		return idUser;
 	}
 	
+	public Date getDateEmbauche() {
+		return DateEmbauche;
+	}
+
+
+	public void setDateEmbauche(Date dateEmbauche) {
+		DateEmbauche = dateEmbauche;
+	}
+
+
 	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
