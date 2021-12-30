@@ -875,3 +875,4 @@ java.lang.RuntimeException: Utilisateur introuvable !!
 2021-12-30 20:00:52.396  INFO 17176 --- [http-nio-3800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-12-30 20:00:52.400  INFO 17176 --- [http-nio-3800-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-12-30 20:00:52.405  INFO 17176 --- [http-nio-3800-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2021-12-30 20:00:53.389  INFO 17176 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
