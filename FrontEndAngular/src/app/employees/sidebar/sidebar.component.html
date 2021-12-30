@@ -19,14 +19,14 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       
        <!-- Partie Dashboard lel Admin -->
-       <li *ngIf="authService.isAdmin()" class="nav-item">
-        <a routerLink="admin/dashboardAdmin" routerLinkActive="active" class="nav-link">
-          <i class="nav-icon fas fa-th"></i>
-          <p>
-            Dashboard
-          </p>
-        </a>
-      </li>
+        <li *ngIf="authService.isAdmin()" class="nav-item">
+          <a routerLink="admin/dashboardAdmin" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Dashboard
+            </p>
+          </a>
+        </li>
 
         <!-- Partie Profil lel Les employee lkol -->
         <li class="nav-item">
