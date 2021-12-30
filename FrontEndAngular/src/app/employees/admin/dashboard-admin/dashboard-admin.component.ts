@@ -63,7 +63,7 @@ export class DashboardAdminComponent implements OnInit {
         this.formateData(data);
         this.formatePieData(data);
       })
-      this.employeeService.getEmployees().subscribe( (data)=>{
+      this.employeeService.getEmployeesList().subscribe( (data)=>{
         this.formateLastData(data)
       })
     }
