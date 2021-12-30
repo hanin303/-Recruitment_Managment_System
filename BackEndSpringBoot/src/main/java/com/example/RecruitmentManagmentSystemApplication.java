@@ -166,15 +166,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		roleRepository.save(role6);
 			
 		
-		//AjouterInterview 
-		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
-		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
-		Interview interview3 = new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0);
-		
-		interviewRep.save(interview1);
-		interviewRep.save(interview2);
-		interviewRep.save(interview3);
-		
 		//AjouterQuestions
 		Questions questions1 = questionsRep.save(new Questions(1L, "Tell me about yourself , your strengths ? weaknesses"));
 		Questions questions2 = questionsRep.save(new Questions(2L, "Why do you want to leave your current job?"));
@@ -191,20 +182,22 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		Date date3=new Date("10/1/2015");
 		Date date4=new Date("08/02/2016");
 		
-		User u1=new Interviewer(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
+		Interviewer u1=new Interviewer(1L,"Mokded", "Maryam", "Maryam@gmail.com", "Bizerte",11427586,53740917, "photoMaryam",cv2,"G","F","I","L");
 		User u2=new Condidats(2L,"Weslati", "Samia", "samia@gmail.com", "Bizerte",11111111,54789632, "photoSamia",cv2,"G","F","I","L");	
-		User u3=new Interviewer(3L,"Dorra", "Ayari", "dorraayari@gmail.com", "Bizerte", 11221122, 56458795, "photo",cv1,"1234",date1,"G","F","I","L");
-		User u4=new Recruteur(4L,"Hanin", "benJemaa", "haninbenjemaa@gmail.com", "Bizerte", 11429204, 54891319, "photo", cv1,"1234",date1,"G","F","I","L");
-		User u5=new Condidats(5L,"Weslati", "Samia", "Samia@gamilcom", "Bizerte", 2222222,53205145, "photoSamia",cv2,"G","F","I","L");
+		Interviewer u3=new Interviewer(3L,"Dorra", "Ayari", "dorraayari@gmail.com", "Bizerte", 11221122, 56458795, "photo",cv1,"1234",date1,"G","F","I","L");
+		Recruteur u4=new Recruteur(4L,"Hanin", "benJemaa", "haninbenjemaa@gmail.com", "Bizerte", 11429204, 54891319, "photo", cv1,"1234",date1,"G","F","I","L");
 		User u6=new Condidats(6L,"Ben Salha", "Ilhem", "Ilhem@gmail.com", "Bizerte",114785236,52186359, "photoIlhem",cv2,"G","F","I","L");
-		User u7=new Recruteur(7L,"Hend", "hend", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
-		User u8=new Condidats(8L,"ilhem", "ben salhha", "bbbb", "bbbb", 2222222,  8888888, "photo2",cv2,"G","F","I","L");
-		User u9=new Admin();
+		Recruteur u7=new Recruteur(7L,"Hend", "hend", "hendamri102@gùail.com", "Tunis", 1111111, 12345678, "photo",cv1,"1234",date2,"G","F","I","L");
+		Recruteur u9=new Recruteur();
 		u9.setCin(12345678);
 		u9.setEmail("ahmed@gmail.com");
 		u9.setPrenom("ahmed");
 		u9.setNom("ben saber");
+		u9.setDateEmbauche(date1);
 		User u10=new Recruteur(10L,"asma", "bbbbbb", "aaaa", "aaaa", 1111111, 12345678, "photo",cv1,"1234",date3,"G","F","I","L");
+		
+		u1.setDateEmbauche(date1);
+		u7.setDateEmbauche(date3);
 		
 		
 		BCryptPasswordEncoder encoder; 
@@ -268,10 +261,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		userRepository.save(u3);
 		u3.getRoles().add(role1);
 		userRepository.save(u4);
-		userRepository.save(u5);
 		userRepository.save(u6);
 		userRepository.save(u7);
-		userRepository.save(u8);
 		userRepository.save(u9);
 		userRepository.save(u10);
 		userRepository.save(u11);
@@ -280,19 +271,8 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 
 		//ajouter un admin
 		
-			
-
-
-        
 		System.out.println("classe name : "+u2.getClass().getSimpleName());
 
-		
-		Date date=new Date();
-		Interview i=new Interview();
-		i.setInterviewDate(date);
-		i.setLocation("ssssssss");
-		interviewRep.save(i);
-	
 		
 	/*	System.out.println("size $$$$$$$  Inter : "+interviewRepository.findAllInterviews().size());
 		
