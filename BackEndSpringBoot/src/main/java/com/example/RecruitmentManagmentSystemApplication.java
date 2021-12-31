@@ -316,8 +316,14 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 			System.out.println("**** : "+user1.get(j).toString());
 		}
 		*/
+		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
+		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
+		Interview interview3 = new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0);
+		interviewRepository.save(interview1);
+		interviewRepository.save(interview2);
+		interviewRepository.save(interview3);		
 		
-
+		
 	}
 	
 	

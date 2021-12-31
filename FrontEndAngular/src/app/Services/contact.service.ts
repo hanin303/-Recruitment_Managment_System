@@ -18,17 +18,13 @@ export class ContactService {
   constructor(private http: HttpClient,private authService : AuthService) { }
 
   getContact(id: number): Observable<any> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.get(`${this.baseUrl}/${id}`,{headers:httpHeaders});
+
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   createContact(contact: Object): Observable<Object> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.post(`${this.baseUrl}`, contact,{headers:httpHeaders});
+    
+    return this.http.post(`${this.baseUrl}`, contact);
   }
 
 
