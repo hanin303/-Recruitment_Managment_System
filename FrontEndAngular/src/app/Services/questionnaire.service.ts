@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Questionnaire } from '../Models/questionnaire';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +10,40 @@ import { Questionnaire } from '../Models/questionnaire';
 export class QuestionnaireService {
   private baseUrl = 'http://localhost:3800/Questionnaire';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private authService : AuthService) { }
+
   getQuestionnaireList(): Observable<Questionnaire[]> {
-    return this.http.get<Questionnaire[]>(`${this.baseUrl}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) ;
+    return this.http.get<Questionnaire[]>(`${this.baseUrl}`,{headers:httpHeaders});
    }
   getQuestionnaire(id: number): Observable<Questionnaire> {
-    return this.http.get<Questionnaire>(`${this.baseUrl}/${id}`);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) ;
+    return this.http.get<Questionnaire>(`${this.baseUrl}/${id}`,{headers:httpHeaders});
   }
 
    createQuestionnaire(questionnaire: Object): Observable<Object> {
-     return this.http.post(`${this.baseUrl}`, questionnaire);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) ;
+     return this.http.post(`${this.baseUrl}`, questionnaire,{headers:httpHeaders});
    }
 
    updateQuestionnaire(id: number, value: any): Observable<Object> {
-     return this.http.put(`${this.baseUrl}/${id}`, value);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) ;
+     return this.http.put(`${this.baseUrl}/${id}`, value,{headers:httpHeaders});
    }
 
    deleteQuestionnaire(id: number): Observable<any> {
-     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt}) ;
+     return this.http.delete(`${this.baseUrl}/${id}`,{headers:httpHeaders});
    }
 
 
