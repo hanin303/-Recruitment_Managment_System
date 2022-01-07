@@ -369,3 +369,7 @@ Caused by: javax.persistence.EntityNotFoundException: Unable to find com.example
 2022-01-07 13:12:26.465  INFO 11688 --- [http-nio-3800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-01-07 13:12:26.466  INFO 11688 --- [http-nio-3800-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-01-07 13:12:26.468  INFO 11688 --- [http-nio-3800-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-01-07 13:56:42.235  INFO 11688 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-01-07 13:56:43.225  INFO 11688 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-01-07 13:56:43.437  INFO 11688 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-01-07 13:56:43.446  INFO 11688 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
