@@ -56,17 +56,12 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private RoleRepository roleRepository;
-	
 	@Autowired
 	private CompetanceRepository competanceRep;
-	
 	@Autowired
 	private ContactRepository contactRepository;
-   
 	@Autowired
 	private InterviewRepository interviewRepository;
-
-	
 	@Autowired
 	CondidatRestService condRS;
 
@@ -129,20 +124,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		OffreRep.save(Offre5);
 		OffreRep.save(Offre6);
 
-		
-	
-		Competance competance1 = new Competance(1L, "Angular", 20);
-		Competance competance2 = new Competance(2L, "Laravel", 100);
-		Competance competance3 = new Competance(3L, "Java", 50);
-		Competance competance4 = new Competance(4L, "Spring Boot", 70);
-
-		competanceRep.save(competance1);
-		competanceRep.save(competance2);
-		competanceRep.save(competance3);
-		competanceRep.save(competance4);
-		
-				
-		
 		//Ajouter deux cv
 		Cv cv1 = new Cv("cv1.pdf");
 		Cv cv2 = new Cv("cv2.pdf");
@@ -152,11 +133,10 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		//Ajouter 6 roles
 		Role role1=new Role(1L, "USER");
 		Role role2=new Role(2L, "ADMIN");
-		Role role3=new Role(1L, "EMPLOYEE");
-		Role role4=new Role(1L, "INTERVIEWER");
-		Role role5=new Role(1L, "RECRUTEUR");
-		Role role6=new Role(1L, "CONDIDAT");
-				
+		Role role3=new Role(3L, "EMPLOYEE");
+		Role role4=new Role(4L, "INTERVIEWER");
+		Role role5=new Role(5L, "RECRUTEUR");
+		Role role6=new Role(6L, "CONDIDAT");
 				
 		roleRepository.save(role1);
 		roleRepository.save(role2);
@@ -253,8 +233,6 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 				u4.setPassword(encoder.encode("hanin"));
 				u4.getRoles().add(role1);
 				u4.getRoles().add(role5);
-				
-		
 		
 		userRepository.save(u1);
 		userRepository.save(u2);		
@@ -269,20 +247,9 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		userRepository.save(u12);
 
 
-		//ajouter un admin
-		
+		//ajouter un admin		
 		System.out.println("classe name : "+u2.getClass().getSimpleName());
-
-		
-	/*	System.out.println("size $$$$$$$  Inter : "+interviewRepository.findAllInterviews().size());
-		
-		Collection<Interview> l1=interviewRepository.findAllInterviews();
-		Collection l = null;
-		int j;
-		l.addAll(l1);		
-
-		System.out.println("**** : "+l.toString());
-   */
+	
 		List<String>s=userRepository.findAllUsers();
 		String annee1=s.get(0).charAt(0)+""+s.get(0).charAt(1)+""+s.get(0).charAt(2)+""+s.get(0).charAt(3);
 		String annee2=s.get(1).charAt(0)+""+s.get(1).charAt(1)+""+s.get(1).charAt(2)+""+s.get(1).charAt(3);
@@ -309,13 +276,7 @@ public class RecruitmentManagmentSystemApplication implements CommandLineRunner{
 		
 		System.out.println("listaaaaaaa : "+a.get(0)+" "+a.get(1)+" "+a.get(2)+" "+a.get(3));
 		
-		//System.out.println("size"+s.size());
-		
-	/*	for(int j=0;j<userRepository.findAllUsers().size();j++) {
-			List<Recruteur> user1= userRepository.findAllUsers();
-			System.out.println("**** : "+user1.get(j).toString());
-		}
-		*/
+	
 		Interview interview1 = new Interview(1L, new Date(),"RH","virtual","12:48",0);
 		Interview interview2 = new Interview(2L, new Date(),"technique","physicall","10:05",0);
 		Interview interview3 = new Interview(3L,  new Date(),"téléphonique","virtual","17:00",0);
